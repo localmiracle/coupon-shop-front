@@ -1,0 +1,11 @@
+.container{
+    overflow-y: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('./../../../../public/bc3.png');
+    min-height: calc(153vh - 493px);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom center;
+}

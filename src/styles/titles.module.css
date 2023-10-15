@@ -1,0 +1,14 @@
+.name{
+    display: block;
+    padding: 10px 0px;
+    padding-top: 10px;
+    
+    color: #403D39;
+    font-family: Inter;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    border-bottom: 1px solid #CCC5B9;
+    margin-bottom: 21px;
+}

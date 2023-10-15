@@ -1,0 +1,1 @@
+export const SUCCESS_AUTH = 200;

@@ -1,0 +1,143 @@
+.formLogin{
+    position: relative;
+    gap: 25px;
+    padding: 45px 52px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    border: 1px solid #929292;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  
+}
+
+.formLogin h1{
+    color: #EB5E28;
+    margin-bottom: 15px;
+}
+
+.title{
+    color: #403D39;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.verif{
+    display: flex;
+    margin-bottom: 141px;
+    align-items: center;
+}
+
+.verif > p{
+    border-radius: 25px 0px 0px 25px;
+    border: 1px solid #BBB;
+    padding: 12px;
+    background-color: #fff;
+    color: #bbb;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+
+
+}
+
+.input{
+    font-size: 26px;
+    font-weight: 600;
+    border-radius: 0px 25px 25px 0px;
+    border: 1px solid #BBB;
+    padding: 9px 0px;
+    text-align: center;
+}
+
+.form_btn{
+    font-size: 28px;
+    cursor: pointer;
+    padding: 11px 50px;
+    background-color: #403D39;
+    color: #fff;
+    outline: none;
+    border-radius: 14px;
+    border: 1px solid #CACACA;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
+    
+}
+
+.email{
+    font-size: 26px;
+    font-weight: 600;
+    border-radius: 25px;
+    border: 1px solid #CCC5B9;
+    background: #FFFCF2;
+    padding: 9px 10px;
+    text-align: left;
+}
+
+.otp{
+    max-width: 355px;
+    color: #494949;
+    font-family: Inter;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.grey{
+    color: #BBB;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.resend{ 
+    display: flex;
+    gap: 5px;
+    font-size: 16px;
+    color: #BBB;
+}
+
+.resend p:nth-child(2) {
+    cursor: pointer;
+    color: black;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px; 
+}
+
+.choice{
+    color: #61594F;
+    font-size: 26px;
+    font-weight: 600;
+    display: flex;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 25px;
+    border: 1px solid #CCC5B9;
+    background: #FFFCF2;
+    padding: 4px;
+}
+
+.choice__item{
+    cursor: pointer;
+    padding: 9px 33px;
+    border-radius: 22px;
+}
+
+.active{
+    color: #1B1915;
+    background-color: #CCC5B9;
+}
+.back{
+    position: absolute;
+    top: 45px;
+    left: 45px;
+    cursor: pointer;
+}

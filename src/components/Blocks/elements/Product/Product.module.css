@@ -1,0 +1,78 @@
+.list__item{
+    position: relative;
+    padding: 10px;
+    display: flex;
+    background-color: #fff;
+    gap: 10px;
+    fill: #FFF;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.20));
+    border-radius: 10px;
+}
+
+.edits{
+    top: 0;
+    right: 0;
+    gap: 10px;
+    display: flex;
+    position: absolute;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+
+.info>div{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.list__item>h3{
+    color: #000;
+    font-family: Inter;
+    font-size: 19px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.description{
+    color: #5A534B;
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    max-width: 140px;
+}
+
+.price{
+    text-align: center;
+    color: #000;
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.btn{
+    border: 0.5px solid rgba(0, 0, 0, 0.10);
+    padding: 20px 65px;
+    border-radius: 10px;
+    background: #EB5E28;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 500ms ease;
+}
+
+.btn:hover{
+    color: black;
+    background-color: rgb(255, 64, 0);
+    transform: scale(0.90);
+}

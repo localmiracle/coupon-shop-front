@@ -1,0 +1,49 @@
+/* Обнуление */
+@import url(./vendor/normalize.css);
+/*  Шрифты */
+@import url(./vendor/fonts.css);
+/* 
+:root{
+    --primary-color: rgba(167, 223, 255, 0.35);
+    --preprimary-color: rgba(167, 223, 255, 0.61);
+    --light-white: rgba(245, 252, 255, 1);
+    --profileColor: #D5EBF8;
+    --hoverColor: rgba(79, 138, 211, 0.37);
+} */
+
+body{
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+}
+ul li { 
+    list-style: none;
+}
+
+table, tr, th, thead, tbody{
+    margin: 0;
+    padding: 0;
+}
+
+
+input{
+    text-decoration: none;
+    outline: none;
+    border: none;
+    padding: 0px;
+}
+p{
+    margin: 0;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+h1,h2,h3,h4,h5,h6{
+    margin: 0;
+}
+
+/* img, svg {
+    max-width: 100%;
+    height: auto;
+} */

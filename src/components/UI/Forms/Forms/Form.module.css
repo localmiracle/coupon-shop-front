@@ -1,0 +1,22 @@
+.form{
+    position: relative;
+    background-color: white;
+    padding: 15px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.closebtn{
+    position: absolute;
+    top: -22px;
+    right: -22px;
+    cursor: pointer;
+    color: white;
+    padding: 2px;
+    background-color: #006BA8;
+    border-radius: 50%;
+}

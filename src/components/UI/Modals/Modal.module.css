@@ -1,0 +1,26 @@
+.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.5s;
+    z-index: 9999;
+    
+}
+
+.modal.active{
+    pointer-events: all;
+    opacity: 1;
+}

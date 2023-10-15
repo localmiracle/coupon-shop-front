@@ -1,0 +1,25 @@
+.footer{
+    background-color: #494949;
+}
+
+.footer__items{
+    align-items: center;
+    justify-content: center;
+    padding: 80px 190px;
+    display: flex;
+    gap: 145px;
+}
+
+.footer__items p{
+    color: #5F5F5F;
+    font-family: Inter;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.footer__items>div{
+    display: flex;
+    gap: 18px;
+}

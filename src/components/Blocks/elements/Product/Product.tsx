@@ -1,0 +1,45 @@
+import React, { FC, useEffect, useState } from 'react'
+import styles from './Product.module.css'
+import Image from 'next/image';
+import ClearIcon from '@mui/icons-material/Clear';
+import EditNoteIcon from '@mui/icons-material/EditNote';
+
+interface ProductProps{
+    id: string | number;
+    image: string;
+    name: string;
+    desc: string;
+    price: number;
+    handleEditProduct?:any, 
+    handleDeleteProduct?:any,
+}
+
+const Product:FC<ProductProps> = ({id, image, name, desc, price, handleEditProduct, handleDeleteProduct}) => {
+  const [isAdmin, setIsAdmin] = useState<boolean>(false)
+  useEffect(()=>{
+    if(localStorage.getItem('adminToken')){
+      setIsAdmin(true)
+    } else {
+      setIsAdmin(false)
+    }
+  },[])
+  return (
+    <div className={styles.list__item}>
+        {isAdmin ?<div className={styles.edits}>
+          <ClearIcon style={{color: 'red',cursor:'pointer'}} onClick={handleDeleteProduct}/>
+          <EditNoteIcon style={{cursor:'pointer'}} onClick={handleEditProduct}/>
+        </div> : null}
+        <Image src={image} alt={''} width={209} height={233}/>
+        <div className={styles.info}>
+            <div>
+                <h3>{name}</h3>
+                <p className={styles.description}>{desc}</p>
+            </div>
+            <p className={styles.price}>{price}₽/мес</p>
+            <button className={styles.btn}>Подписаться</button>
+        </div>
+    </div>
+  )
+}
+
+export default Product

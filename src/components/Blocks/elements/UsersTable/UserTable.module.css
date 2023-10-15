@@ -1,0 +1,42 @@
+.table__wrapper{
+    border-radius: 10px;
+    overflow: hidden; /* чтобы скрыть выступы из-за округления границ */
+    box-shadow: 0 0 0 1px #CCC5B9, 0 0 0 1px #CCC5B9 inset;
+    margin: -1px; 
+}
+
+.table{
+    width: 100%;
+    background-color: #FFFCF2;
+    border: 1px solid #CCC5B9;
+    border-collapse: collapse;
+
+}
+
+.th{
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid #CCC5B9;
+    padding: 7px;
+}
+
+.td{
+    border-radius: 10px;
+    border: 1px solid #CCC5B9;
+    padding: 15px 100px;
+    text-align: center;
+}
+
+.success{
+    color: #4A984C;
+    background: #C6FFC8;
+    padding: 3px 10px;
+    border-radius: 10px;
+}
+
+.error{
+    padding: 3px 10px;
+    color: #AA3232;
+    border-radius: 10px;
+    background: #FFABAB;
+}

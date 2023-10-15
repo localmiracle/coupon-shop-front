@@ -1,0 +1,28 @@
+.items{
+    display: flex;
+    position: relative;
+    align-items: center;
+    gap: 13px;
+}
+
+.arrowRight{
+    position: absolute; 
+    right: -20px;
+    font-size: 40px;
+    background: #BBBBBB;
+    opacity: 0.4;
+    z-index: 1;
+    cursor:pointer;
+    border-radius: 50%;
+}
+
+.arrowLeft{
+    position: absolute; 
+    left: -20px;
+    font-size: 40px;
+    background: #BBBBBB;
+    opacity: 0.4;
+    z-index: 1;
+    cursor:pointer;
+    border-radius: 50%;
+}
