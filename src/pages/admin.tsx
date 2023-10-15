@@ -2,7 +2,6 @@ import Coupons from '@/components/Blocks/elements/Admin/Coupons/Coupons'
 import Panel from '@/components/Blocks/elements/Admin/Panel/Panel'
 import AdminContainer from '@/components/Containers/AdminContainer/AdminContainer'
 import AdminForm from '@/components/UI/Forms/AdminForm/AdminForm'
-import Form from '@/components/UI/Forms/Forms/Form'
 import { NextPage } from 'next'
 import React, { useEffect, useState } from 'react'
 
