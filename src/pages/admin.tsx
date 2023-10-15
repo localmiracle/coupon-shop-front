@@ -7,7 +7,7 @@ import { NextPage } from 'next'
 import React, { useEffect, useState } from 'react'
 
 
-const admin:NextPage = () => {
+const adminPage:NextPage = () => {
   const [status, setStatus] = useState<boolean>(false)
   useEffect(()=>{
     const token = localStorage.getItem('adminToken')
@@ -38,4 +38,4 @@ const admin:NextPage = () => {
   )
 }
 
-export default admin
+export default adminPage

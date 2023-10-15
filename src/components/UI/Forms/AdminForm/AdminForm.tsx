@@ -18,7 +18,7 @@ const AdminForm = () => {
         e.preventDefault()
         try {
           const response = await fetch(
-            "http://localhost:8080/admin/auth/sing-in",
+            "http://95.163.228.158/admin/auth/sing-in",
             {
               method: "POST",
               headers: {

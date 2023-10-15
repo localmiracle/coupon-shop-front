@@ -98,7 +98,7 @@ const FormLogin = () => {
       }
       const resource = email ? email : phone;
       try {
-          const response = await fetch('http://localhost:8080/api/auth', {
+          const response = await fetch('http://95.163.228.158/api/auth', {
               method: 'POST',
               headers: {
               'Content-Type': 'application/json',
@@ -122,7 +122,7 @@ const FormLogin = () => {
     dispatch(setErrors(''))
     dispatch(setValues(['','','','']))    
     try {
-      const response = await fetch('http://localhost:8080/api/otp/send', {
+      const response = await fetch('http://95.163.228.158/api/otp/send', {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json',
@@ -144,7 +144,7 @@ const FormLogin = () => {
     e.preventDefault();
     const code = values.join('')
     const response = await fetch(
-      "http://localhost:8080/api/otp/verify",
+      "http://95.163.228.158/api/otp/verify",
       {
         method: "POST",
         headers: {
