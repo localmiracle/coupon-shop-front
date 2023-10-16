@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styles from './AdminForm.module.css'
 import Input from '../../Inputs/Input'
-import { useRouter } from 'next/router'
+
 
 const AdminForm = () => {
     const [adminToken, setAdminToken] = useState<string>('') 

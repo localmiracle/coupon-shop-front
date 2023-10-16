@@ -1,4 +1,3 @@
-import AddCoupons from '@/components/Blocks/elements/Admin/Coupons/AddCoupons/AddCoupons'
 import Coupons from '@/components/Blocks/elements/Admin/Coupons/Coupons'
 import Panel from '@/components/Blocks/elements/Admin/Panel/Panel'
 import Subcriptions from '@/components/Blocks/elements/Admin/Subscriptions/Subcriptions'
