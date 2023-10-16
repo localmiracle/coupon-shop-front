@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 
 const AdminForm = () => {
     const [adminToken, setAdminToken] = useState<string>('') 
-
+    const [error, setError] = useState<string>('')
     const [login,setLogin] = useState<string>('')
     const [password,setPassword] = useState<string>('')
     const handleLogin = (e:any) =>{
@@ -18,7 +18,7 @@ const AdminForm = () => {
         e.preventDefault()
         try {
           const response = await fetch(
-            "http://95.163.228.158/admin/auth/sing-in",
+            "http://parcus.shop/admin/auth/sing-in",
             {
               method: "POST",
               headers: {
@@ -28,9 +28,12 @@ const AdminForm = () => {
             },
           );
           const data = await response.json()
-          if (data){
+          console.log(data)
+          if (data.access_token){
             localStorage.setItem('adminToken', data.access_token)
             setAdminToken(data.access_token)
+          } else {
+            setError('Неверные данные')
           }
         } catch(error) {
           console.error(error)
@@ -49,6 +52,7 @@ const AdminForm = () => {
                 <Input type='text' value={login} onChange={handleLogin}/>
                 <Input type='text' value={password} onChange={handlePassword}/>
                 {adminToken ? <p style={{color: 'green'}}>Успешный вход...</p> : null}
+                {error ? <p style={{color: 'red'}}>{error}</p> : null}
                 <button onClick={authAdmin} 
                 >Войти</button>
             </div>

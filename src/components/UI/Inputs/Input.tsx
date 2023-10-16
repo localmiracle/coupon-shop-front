@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import styles from './input.module.css'
+
 interface InputProps {
     type:string;
     value: string;

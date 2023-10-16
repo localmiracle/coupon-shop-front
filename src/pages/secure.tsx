@@ -1,5 +1,7 @@
+import AddCoupons from '@/components/Blocks/elements/Admin/Coupons/AddCoupons/AddCoupons'
 import Coupons from '@/components/Blocks/elements/Admin/Coupons/Coupons'
 import Panel from '@/components/Blocks/elements/Admin/Panel/Panel'
+import Subcriptions from '@/components/Blocks/elements/Admin/Subscriptions/Subcriptions'
 import AdminContainer from '@/components/Containers/AdminContainer/AdminContainer'
 import AdminForm from '@/components/UI/Forms/AdminForm/AdminForm'
 import { NextPage } from 'next'
@@ -8,10 +10,13 @@ import React, { useEffect, useState } from 'react'
 
 const adminPage:NextPage = () => {
   const [status, setStatus] = useState<boolean>(false)
+  const [token, setToken] = useState<string  | null>(null)
+  
   useEffect(()=>{
-    const token = localStorage.getItem('adminToken')
-    if (token){
+     const adminToken = localStorage.getItem('adminToken')
+    if (adminToken){
       setStatus(true)
+      setToken(localStorage.getItem('adminToken'))
     } else {
       setStatus(false)
     }
@@ -26,12 +31,13 @@ const adminPage:NextPage = () => {
         <>
           <button type='button' onClick={handleSignOut}>Выйти</button>
           <Panel>
-            <Coupons></Coupons>  
+            <Coupons token={token}></Coupons>
+            <Subcriptions token={token}/>
           </Panel>
         </>
-
-
-       : <AdminForm />}
+       :
+        <AdminForm />
+      }
        
     </AdminContainer>
   )
