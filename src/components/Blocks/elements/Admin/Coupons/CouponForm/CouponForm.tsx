@@ -1,50 +1,113 @@
 import React, { useState, useEffect, FC } from "react";
 import styles from './CouponForm.module.css'
+import CloseIcon from '@mui/icons-material/Close';
 
 interface CouponFormProps{
+    token:any;
     coupon: any;
-    
-    onDelete: any;
-    onEdit:any;
+    data: any;
+    setIsEdit: any;
+    setIsEdited: any;
 }
 
-const CouponForm:FC<CouponFormProps> =({ coupon, onDelete, onEdit }) =>{
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [mini_desc, setMiniDesc] = useState('')
+const CouponForm:FC<CouponFormProps> =({ token, coupon, data, setIsEdit,setIsEdited }) =>{
+  
+  const [name, setName] = useState<string>('')
+  const [description, setDescription] = useState<string>('')
+  const [price, setPrice] = useState<string>('')
+  const [level, setLevel] = useState<string>('')
+  const [newName, setNewName] = useState<string>('')
+  const [newDescription, setNewDescription] = useState<string>('')
+  const [newPrice, setNewPrice] = useState<string>('')
+  const [newLevel, setNewLevel] = useState<string>('')
+  const [success, setSuccess] = useState<string>('')
   useEffect(() => {
-    if (coupon) {
-      setTitle(coupon.title);
-      setDescription(coupon.description);
+    for (let i = 0; i < data.length; i++){
+      if (data[i].id === coupon){
+        console.log(data[i])
+        setName(data[i].name)
+        setDescription(data[i].description)
+        setPrice(data[i].price)
+        setLevel(data[i].level)
+      } else {
+        continue
+      }
     }
-  }, [coupon]);
+    
+  }, [])
 
-  const handleTitleChange = (e:any) => {
-    onEdit({ ...coupon, title: e.target.value });
-  };
+  const handleChangeName = (e:any) =>{
+    setNewName(e.target.value)
+  }
+  const handleChangeDescription = (e:any) =>{
+    setNewDescription(e.target.value)
+  }
+  const handleChangeLevel = (e:any) =>{
+    setNewLevel(e.target.value)
+  }
+  const handleChangePrice = (e:any) =>{
+    setNewPrice(e.target.value)
+  }
 
-  const handleDescriptionChange = (e: any) => {
-    onEdit({ ...coupon, description: e.target.value });
-  };
-
-  const handleMiniDescChange = (e: any) => {
-    onEdit({ ...coupon, mini_desc: e.target.value });
-  };
-  const handleDelete = () => {
-    onDelete(coupon.id);
-  };
-
+  const changeData = async (e:any) => {
+    e.preventDefault()
+    const dataName = newName? newName : name;
+    const dataDescription = newDescription? newDescription : description;
+    const dataLevel = newLevel ? parseInt(newLevel, 10) : parseInt(level, 10);
+    const dataPrice = newPrice? parseInt(newPrice,10) : parseInt(price,10);
+    const response = await fetch(`http://parcus.shop/admin/coupon/${coupon}`,
+    {
+      method: "PUT",
+      headers: {
+      "Content-Type": "application/json",
+       Authorization: `Bearer ${token}`,
+      }, 
+      body: JSON.stringify({
+        name: dataName,
+        description: dataDescription,
+        level: dataLevel,
+        price: dataPrice,
+      })
+    })
+    const res = response.json()
+    setTimeout(() => {
+      setIsEdited(true)
+      setSuccess('Изменения применены!')
+    }, 3000);
+    setTimeout(() => {
+      setIsEdited(false)
+      setSuccess('')
+    }, 4000);
+  }
+  
   return (
     <form className={styles.editForm}>
+        <CloseIcon style={{color: 'red', cursor: 'pointer', fontSize: '30px'}} onClick={()=>setIsEdit(false)}/>
         <div className={styles.formwrapper}>
-            <h4 style={{textAlign: 'center'}}>Измените название</h4>
-            <input type="text" value={title} onChange={handleTitleChange} style={{maxWidth: '150px', borderRadius: '10px'}}/>
-            <h4>Измените мини-описание</h4>
-            <textarea style={{maxWidth: '250px',maxHeight:'100px', borderRadius: '10px'}} value={description} onChange={handleDescriptionChange} />
-            <h4>Измените описание</h4>
-            <textarea style={{maxWidth: '250px',maxHeight:'100px', borderRadius: '10px'}} value={mini_desc} onChange={handleMiniDescChange}/>
-            <button>Сохранить изменения</button>
-            {coupon && <button onClick={handleDelete}>Delete</button>}
+            <h3>Выбранный купон:</h3>
+            <p>Наименование: {name}</p>
+            <input type="text" 
+            placeholder="Изменить наименование.."
+            value={newName}
+            onChange={handleChangeName}/>
+            <p>Описание:{description}</p>
+            <input type="text" 
+            placeholder="Изменить описание.."
+            value={newDescription}
+            onChange={handleChangeDescription}/>
+            <p>Цена:{price}</p>
+            <input type="text" 
+            placeholder="Изменить цену.."
+            value={newPrice}
+            onChange={handleChangePrice}/>
+            <p>Уровень:{level}</p>
+            <input type="text" 
+            placeholder="Изменить уровень.."
+            value={newLevel}
+            onChange={handleChangeLevel}/>
+            {success ? <p style={{color: 'green'}}>{success}</p> : null}
+            <button onClick={changeData}>Изменить</button>
+            
         </div>
     </form>
   );

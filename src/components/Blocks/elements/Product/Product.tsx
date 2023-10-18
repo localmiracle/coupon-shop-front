@@ -8,13 +8,14 @@ interface ProductProps{
     id: string | number;
     image: string;
     name: string;
-    desc: string;
+    description: string;
+    level: number;
     price: number;
     handleEditProduct?:any, 
     handleDeleteProduct?:any,
 }
 
-const Product:FC<ProductProps> = ({id, image, name, desc, price, handleEditProduct, handleDeleteProduct}) => {
+const Product:FC<ProductProps> = ({id, image, name, description, level, price, handleEditProduct, handleDeleteProduct}) => {
   const [isAdmin, setIsAdmin] = useState<boolean>(false)
   useEffect(()=>{
     if(localStorage.getItem('adminToken')){
@@ -33,9 +34,10 @@ const Product:FC<ProductProps> = ({id, image, name, desc, price, handleEditProdu
         <div className={styles.info}>
             <div>
                 <h3>{name}</h3>
-                <p className={styles.description}>{desc}</p>
+                <p className={styles.description}>{description}</p>
             </div>
             <p className={styles.price}>{price}₽/мес</p>
+            <p>Уровень: {level}</p>
             <button className={styles.btn}>Подписаться</button>
         </div>
     </div>

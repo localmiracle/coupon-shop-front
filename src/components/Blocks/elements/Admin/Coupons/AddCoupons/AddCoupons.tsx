@@ -3,10 +3,11 @@ import styles from './addcoupouns.module.css'
 
 interface AddCouponsProps{
     token: string | null;
+    setIsAdded: any;
 }
 
 
-const AddCoupons:FC<AddCouponsProps> = ({token}) => {
+const AddCoupons:FC<AddCouponsProps> = ({token, setIsAdded}) => {
     const [image, setImage] = useState<File | null>(null)
     const [value, setValue] = useState<string>('')
     const [success, setSuccess] = useState<string>('')
@@ -58,7 +59,11 @@ const AddCoupons:FC<AddCouponsProps> = ({token}) => {
         setSuccess('Товар успешно добавлен!')
         setTimeout(() => {
             setSuccess('')
+            setIsAdded(true)
         }, 3000);
+        setTimeout(() => {
+            setIsAdded(false)
+        }, 4000);
     }
 
 

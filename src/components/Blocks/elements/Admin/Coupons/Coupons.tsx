@@ -1,28 +1,25 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import ProductList from '../../ProductList/ProductList'
-import CouponForm from './CouponForm/CouponForm';
 import AddCoupons from './AddCoupons/AddCoupons';
 import styles from './Coupons.module.css'
-import { get } from 'http';
+import Modal from '@/components/UI/Modals/Modal';
+import CouponForm from './CouponForm/CouponForm';
 
 interface CouponProps{
     token: string | null;
 }
 
 const Coupons:FC<CouponProps> = ({token}) => {
-    const [productList, setProductList] = useState([
-      {
-        id: 1,
-        image: '/TestImage.png',
-        name: 'Test1',
-        desc: 'Test Desc For Tests',
-        price: 100,
-      },
-      // другие товары
-    ]);
-    const [newProductList, setNewProductList] = useState<[] | undefined>([])
-    
-    const getCoupons = async() => {
+    const [newProductList, setNewProductList] = useState<[] | undefined>([]) 
+    const [open, setOpen] = useState<boolean>(false)
+    const [id, setId] = useState<string>('')
+    const [success, setSuccess] = useState<string>('')
+    const [isEdit, setIsEdit] = useState<boolean>(false)
+    const [isAdded, setIsAdded] = useState<boolean>(false)
+    const [isDeleted, setIsDeleted] = useState<boolean>(false)
+    const [isEdited, setIsEdited] = useState<boolean>(false)
+    useEffect(() => {
+      const getCoupons = async() => {
       const response = await fetch('http://parcus.shop/admin/coupon', 
       {
         
@@ -33,57 +30,73 @@ const Coupons:FC<CouponProps> = ({token}) => {
           },        
       })
       const data = await response.json()
-      console.log(data)
       // В Data мы получаем массив объектов, у которых в первом поле идет ссылка, на которую 
       //необходимо отправить запрос для получения картинки 
-      
-      const updatedData = await Promise.all(data.map(async (coupon:any) => {
-        const getImages = await fetch (coupon.content_url,{
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },        
-        })
-        const image = await getImages.json();
-        if (image){
-          console.log(image)
-        }
-        return { ...coupon, image }
-      }));
-      console.log(updatedData)
-    }
+      setNewProductList(data)
+      }
+      getCoupons();
+    }, [isAdded,isDeleted,isEdited])
+    
+    const handleEditOpen = async (productId: any) => {
+      setIsEdit(true)
+      setId(productId)
+    };
 
-    const [selectedProduct, setSelectedProduct] = useState<any | null>(null);
-  
-    const handleEditProduct = (productId: any) => {
-        const selectedCoupon = productList.find(product => product.id === productId);
-        setSelectedProduct(selectedCoupon);
+    const handleDeleteOpen = async (productId: any) => {
+        setOpen(true)
+        setId(productId)
     };
-  
-    const handleDeleteProduct = (productId: any) => {
-        setProductList((prevProductList) =>
-          prevProductList.filter((product) => product.id !== productId)
-        );
-    };
+    const handleDeleteProduct = async (productId: any) => {
+      const response = await fetch(`http://parcus.shop/admin/coupon/${productId}`,
+      {
+        method: "DELETE",
+        headers: {
+        "Content-Type": "application/json",
+         Authorization: `Bearer ${token}`,
+        }, 
+      }
+      )
+      setSuccess('Товар успешно удален')
+      setTimeout(() => {  
+        setOpen(!open)
+        setSuccess('')
+        setId('')
+        setIsDeleted(true)
+      }, 3000);
+      setTimeout(() => {
+        setIsDeleted(false)
+      }, 4000);
+  };
+    
   
     return (
       <div className={styles.coupons}>
         <h2 style={{textAlign: 'center'}}>Coupons</h2>
-        {/* <CouponForm
-           coupon={selectedProduct}
-           onEdit={setSelectedProduct}
-           onDelete={handleDeleteProduct}
-        /> */}
-        <AddCoupons token={token}/>
-        <ProductList
-          productList={productList}
-          handleEditProduct={handleEditProduct}
-          handleDeleteProduct={handleDeleteProduct}
+        <AddCoupons token={token} setIsAdded={setIsAdded}/>
+        <h2>Все товары:</h2>
+        { open ? 
+        <Modal modalOpen={open} setModalOpen={setOpen}>
+          <div style={{background: 'white', padding: '15px'}}>
+            <h4>Вы уверены, что хотите удалить товар ${id}?</h4>
+            {success? <p style={{color: 'green'}}>{success}</p> : null}
+            <button style={{background:'red'}} onClick={()=>handleDeleteProduct(id)}>Удалить</button>
+            <button onClick={()=>setOpen(!open)}>Отмена</button>
+          </div>
+          </Modal> 
+          : null }
+        {
+          isEdit?
+          <Modal modalOpen={isEdit} setModalOpen={()=>isEdit}>
+           <CouponForm token={token} coupon={id} 
+           data={newProductList} setIsEdit={setIsEdit} setIsEdited={setIsEdited} />
+          </Modal>
+          : null
+        }
+        <ProductList 
+        productList={newProductList} 
+        handleDeleteProduct={(productId:any)=>handleDeleteOpen(productId)}
+        handleEditProduct={(productId:any)=>handleEditOpen(productId)}
         />
-        <h2>Новые товары:</h2>
-        <button onClick={getCoupons}>Получить товары</button>
-        <ProductList productList={newProductList}/>
       </div>
     );
   };

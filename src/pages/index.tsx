@@ -5,9 +5,36 @@ import HomeContainer from '@/components/Containers/HomeContainer/HomeContainer';
 import { NextPage } from 'next'
 
 import Head from 'next/head';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const HomePage:NextPage = () => {
+  const [token, setToken] = useState<string | null>('')
+  const [productList, setProductList] = useState<any>(null) 
+  useEffect(() => {
+    const systemToken = localStorage.getItem('token')
+    setToken(systemToken)
+     const getCoupons = async() => {
+      const response = await fetch('http://parcus.shop/api/coupons', 
+      {
+        
+          method: "GET",
+          headers: {
+          "Content-Type": "application/json",
+           Authorization: `Bearer ${systemToken}`,
+          },        
+      })
+      const data = await response.json()
+      setProductList(data)
+
+    }
+    getCoupons()
+  }, [])
+  
+  
+ 
+   
+      
+  
   return (
     <>
         <Head>
@@ -16,10 +43,10 @@ const HomePage:NextPage = () => {
             <link rel="icon" href="/testIcon.png" />
         </Head>
         <HomeHeader />
-        <HomeContainer>
+        <HomeContainer >
             
             
-            <HomeMain /> 
+            <HomeMain productList={productList}/> 
         </HomeContainer>
         <Footer />
     </>

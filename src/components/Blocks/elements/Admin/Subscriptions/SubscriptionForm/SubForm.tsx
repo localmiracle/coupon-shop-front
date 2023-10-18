@@ -1,11 +1,10 @@
 import React, { FC, useState } from 'react'
-
-interface SubProps{
+import styles from './Sub.module.css'
+interface SubFormProps{
     token: string | null;
 }
 
-const Subcriptions:FC<SubProps> = ({token}) => {
-    
+const SubForm:FC<SubFormProps> = ({token}) => {
     const [value, setValue] = useState<string>('')
     const [success, setSuccess] = useState<string>('')
     const [description, SetDescription] = useState<string>('')
@@ -23,9 +22,11 @@ const Subcriptions:FC<SubProps> = ({token}) => {
     const handleChangePrice = (e:any) =>{
         setPrice(e.target.value)
     }
-    
-    const createCoupon = async(e: React.FormEvent) => {
+     const createSubcription = async(e: React.FormEvent) => {
         e.preventDefault();
+        const dataLevel = parseInt(level, 10)
+        const dataPrice = parseInt(price, 10);
+        
         const response = await fetch('http://parcus.shop/admin/subscription',
         {
             method: "POST",
@@ -36,12 +37,11 @@ const Subcriptions:FC<SubProps> = ({token}) => {
             body: JSON.stringify({
                 name: value,
                 description: description,
-                price: price,
-                level: level
+                price: dataPrice,
+                level: dataLevel
             })
             
-        }
-        )
+        })
         setValue('')
         SetDescription('')
         setPrice('')
@@ -52,21 +52,19 @@ const Subcriptions:FC<SubProps> = ({token}) => {
         }, 3000);
     }
   return (
-    <div>
-        <h3>Подписки</h3>
-        <h4>Создать подписку</h4>
-        <form action="">
+    <form action="" className={styles.formsub}>
             <p>Введите название</p>
             <input type="text" value={value} onChange={handleChangeValue}/>
             <p>Введите описание</p>
-            <input type="text" />
+            <input type="text" value={description} onChange={handleChangeDescription}/>
             <p>Укажите цену</p>
-            <input type="text" />
+            <input type="text" value={price} onChange={handleChangePrice}/>
             <p>Укажите уровень подписки</p>
-            <input type="text" />
-        </form>
-    </div>
+            <input type="text" value={level} onChange={handleChangeLevel}/>
+            {success ? <p style={{color:'green'}}>{success}</p> : null}
+            <button onClick={createSubcription}>Создать подписку</button>
+    </form>
   )
 }
 
-export default Subcriptions
+export default SubForm

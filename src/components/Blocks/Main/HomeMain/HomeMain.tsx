@@ -4,7 +4,11 @@ import Image from 'next/image';
 import Man from './../../../../../public/ManIcon.png'
 import ProductList from '../../elements/ProductList/ProductList';
 
-const HomeMain:FC = () => {
+interface HomeMainProps{
+    productList?: any
+}
+
+const HomeMain:FC<HomeMainProps> = ({productList}) => {
   return (
     <main>
         <div className={styles.ads}></div>
@@ -14,7 +18,7 @@ const HomeMain:FC = () => {
                 
                 <h1>ПРЕВРАТИТЕ СВОИ ПОКУПКИ В СБЕРЕЖЕНИЯ </h1>
                 <h3>Выгодные предложения</h3>
-                <ProductList />
+                <ProductList productList={productList}/>
                 
             </div>
 
@@ -25,7 +29,7 @@ const HomeMain:FC = () => {
         <section className={styles.bottom}>
             <div className={styles.bottom__left}>
                 <h3>Популярно в последнее время</h3>
-                <ProductList />
+                <ProductList productList={productList}/>
             </div>
             <div className={styles.bottom__right}>
                 <Image 

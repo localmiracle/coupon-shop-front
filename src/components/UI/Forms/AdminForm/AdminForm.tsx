@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import styles from './AdminForm.module.css'
 import Input from '../../Inputs/Input'
-
+const jwt = require('jsonwebtoken');
 
 const AdminForm = () => {
+    
     const [adminToken, setAdminToken] = useState<string>('') 
     const [error, setError] = useState<string>('')
     const [login,setLogin] = useState<string>('')
@@ -14,6 +15,16 @@ const AdminForm = () => {
     const handlePassword = (e:any) =>{
         setPassword(e.target.value)
     } 
+    function getTokenExpiration(token:any) {
+      try {
+        const decodedToken = jwt.decode(token);
+        const expirationTime = decodedToken ? decodedToken.exp : null;
+        return expirationTime;
+      } catch (error) {
+        console.error('Ошибка при получении времени жизни токена:', );
+        return null;
+      }
+    }
     const authAdmin = async(e:React.FormEvent) =>{ 
         e.preventDefault()
         try {
@@ -28,7 +39,9 @@ const AdminForm = () => {
             },
           );
           const data = await response.json()
-          console.log(data)
+          const token = data.access_token
+          const expiration = getTokenExpiration(token);
+          localStorage.setItem('time', expiration)
           if (data.access_token){
             localStorage.setItem('adminToken', data.access_token)
             setAdminToken(data.access_token)
@@ -40,7 +53,7 @@ const AdminForm = () => {
         } 
         setTimeout(() => {
           location.reload()
-        }, 5000);
+        }, 4000);
         
     }
   return (
