@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import styles from './modal.module.css'
+import styles from './Modal.module.css'
 
 interface ModalProps{
     modalOpen: boolean;
