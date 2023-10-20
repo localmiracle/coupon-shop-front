@@ -1,11 +1,13 @@
 import React, { FC } from 'react'
 import styles from './AdminHeader.module.css'
+import Logo from '../HomeHeader/HomeHeaderElements/Logo/Logo'
 
 const AdminHeader:FC = () => {
+  
   return (
     <>
         <div className={styles.info}>
-            <h2>ShopSmart</h2>
+            <Logo />
             <div>
                 <h2>
                     Администратор

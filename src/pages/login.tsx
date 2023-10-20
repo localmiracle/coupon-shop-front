@@ -10,6 +10,7 @@ const login:NextPage = () => {
   return (
     <>
       <Head>
+        <title>Parcus | Вход</title>
         <link rel="icon" href="/testIcon.png" />
       </Head>
       <LoginContainer >

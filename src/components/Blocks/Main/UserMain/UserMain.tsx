@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 import { setActivePage } from '@/redux/activePageSlice';
 import { RootState } from '@/redux/store';
+import { useRouter } from 'next/router';
 
 interface UserMainProps{ 
   children: React.ReactNode;
@@ -15,6 +16,7 @@ interface UserMainProps{
 
 const UserMain:FC<UserMainProps> = ({children}) => {
     const dispatch = useDispatch();
+    const router = useRouter()
     const activePage = useSelector((state:RootState) => state.activePage.activePage)
     useEffect(() => {
       const path = window.location.pathname; // получаем текущий путь
@@ -32,6 +34,18 @@ const UserMain:FC<UserMainProps> = ({children}) => {
       }
 
     }, []);
+    const redirectToUser = () =>{
+      router.push('/user')
+    }
+    const redirectToSubcriptions = () =>{
+      router.push('/user/subscription')
+    }
+    const redirectToTransactions = () =>{
+      router.push('/user/transactions')
+    }
+    const redirectToOrganisations = () =>{
+      router.push('/user/organisations')
+    }
     const handleLinkClick = (page:string) => {
       dispatch(setActivePage(page));
     }
@@ -40,22 +54,22 @@ const UserMain:FC<UserMainProps> = ({children}) => {
         <nav className={styles.left}>
             <div className={styles.left__item}>
               
-                <TuneIcon />
+                <TuneIcon onClick={redirectToUser}/>
                 <Link 
                 href={'/user'}
                 onClick={()=> handleLinkClick('settings')}
                 className={activePage === 'settings' ? styles.activePage : ''}>Настройка</Link>
             </div>
             <div className={styles.left__item}>
-                
-                <HowToRegIcon />
+              
+                <HowToRegIcon onClick={redirectToSubcriptions}/>
                 <Link href={'/user/subscription'}
                 onClick={()=> handleLinkClick('buy')}
                 className={activePage === 'buy' ? styles.activePage : ''}>Купить подписку</Link>
             </div>
             <div className={styles.left__item}>
             
-                <MultipleStopIcon />
+                <MultipleStopIcon onClick={redirectToTransactions}/>
                 <Link 
                 onClick={()=> handleLinkClick('history')}
                 href={'/user/transactions'}
@@ -63,7 +77,7 @@ const UserMain:FC<UserMainProps> = ({children}) => {
             </div>
             <div className={styles.left__item}>
                 
-                <WorkOutlineOutlinedIcon />
+                <WorkOutlineOutlinedIcon onClick={redirectToOrganisations}/>
                 <Link href={'/user/organisations'}
                 onClick={()=> handleLinkClick('organisations')}
                 className={activePage === 'organisations' ? styles.activePage : ''}>Мои организации</Link>

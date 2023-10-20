@@ -36,8 +36,9 @@ const Product:FC<ProductProps> = ({id, image, name, description, level, price, h
                 <h3>{name}</h3>
                 <p className={styles.description}>{description}</p>
             </div>
-            <p className={styles.price}>{price}₽/мес</p>
-            <p>Уровень: {level}</p>
+            <p className={styles.level}>Уровень: {level}</p>
+            <p className={styles.price}>{price} ₽</p>
+            
             <button className={styles.btn}>Подписаться</button>
         </div>
     </div>

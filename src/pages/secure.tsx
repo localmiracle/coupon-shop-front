@@ -5,6 +5,9 @@ import AdminForm from '@/components/UI/Forms/AdminForm/AdminForm'
 import Subscriptions  from '@/components/Blocks/elements/Admin/Subscriptions/Subscriptions'
 import { NextPage } from 'next'
 import React, { useEffect, useState } from 'react'
+import Organisations from '@/components/Blocks/elements/Admin/Organisations/Organisations'
+import Head from 'next/head'
+
 
 
 const adminPage:NextPage = () => {
@@ -18,7 +21,7 @@ const adminPage:NextPage = () => {
     const currentTime = Math.floor(Date.now()/1000)
     if (time){
       if (currentTime > parseInt(time)){
-        
+
       }
     }
     
@@ -39,20 +42,26 @@ const adminPage:NextPage = () => {
       location.reload()
     }
   return (
-    <AdminContainer>
-      {status ? 
-        <>
-          <button type='button' onClick={handleSignOut}>Выйти</button>
-          <Panel>
-            <Coupons token={token}></Coupons>
-            <Subscriptions token={token}/>
-          </Panel>
-        </>
-       :
-        <AdminForm />
-      }
-       
-    </AdminContainer>
+    <>
+      <Head>
+        <title>Parcus | Администратор</title>
+      </Head>
+      <AdminContainer>
+        {status ? 
+          <>
+            <button type='button' onClick={handleSignOut}>Выйти</button>
+            <Panel>
+              <Coupons token={token}></Coupons>
+              <Subscriptions token={token}/>
+              <Organisations token={token}/>
+            </Panel>
+          </>
+        :
+          <AdminForm />
+        }
+        
+      </AdminContainer>
+    </>
   )
 }
 

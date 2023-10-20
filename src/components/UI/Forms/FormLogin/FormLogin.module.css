@@ -141,3 +141,28 @@
     left: 45px;
     cursor: pointer;
 }
+
+.auth_code{
+    position: absolute;
+    top: 60%;
+    color: #EB5E28;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.special{
+    max-width: 477px;
+    margin-top: 188px;
+    color: #494949;
+    text-align: center;
+    font-family: Inter;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}

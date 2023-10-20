@@ -53,7 +53,7 @@ const AdminForm = () => {
         } 
         setTimeout(() => {
           location.reload()
-        }, 4000);
+        }, 15000);
         
     }
   return (
@@ -63,7 +63,7 @@ const AdminForm = () => {
             <div>
                 <h2 style={{textAlign: 'center'}}>Вход</h2>
                 <Input type='text' value={login} onChange={handleLogin}/>
-                <Input type='text' value={password} onChange={handlePassword}/>
+                <Input type='password' value={password} onChange={handlePassword}/>
                 {adminToken ? <p style={{color: 'green'}}>Успешный вход...</p> : null}
                 {error ? <p style={{color: 'red'}}>{error}</p> : null}
                 <button onClick={authAdmin} 

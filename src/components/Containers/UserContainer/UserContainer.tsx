@@ -17,7 +17,7 @@ const UserContainer:FC<UserContainerProps> = ({children}) => {
   } else if (activePage === 'transactions') {
     pageTitle = 'Транзакции';
   } else if (activePage === 'buy') {
-    pageTitle = 'Транзакции';
+    pageTitle = 'Подписки';
   } else if (activePage === 'organisations') {
     pageTitle = 'Организации';
   } else {

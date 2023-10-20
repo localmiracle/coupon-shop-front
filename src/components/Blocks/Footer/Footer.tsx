@@ -8,7 +8,7 @@ const Footer = () => {
   return (
     <footer className={styles.footer}>
         <div className={styles.footer__items}>
-            <p>©2023 ShopSmart</p>
+            <p>©2023 Parcus</p>
             <p>Партнёры</p>
             <p>О программе</p>
             <p>Контакты</p>

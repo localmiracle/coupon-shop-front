@@ -62,7 +62,8 @@ const OrganisationsList:FC<organisationListProps> = ({token}) => {
       </div>
     </div>
   ) : (
-    <p>Вы не состоите в организациях</p>
+    <p className={styles.notfound}>Вы не являетесь участником какой-либо организации
+    или её владельцем.</p>
   )}
     </div>
   )

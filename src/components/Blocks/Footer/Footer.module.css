@@ -9,6 +9,14 @@
     display: flex;
     gap: 145px;
 }
+@media (max-width: 1200px){
+    .footer__items{
+        gap: 60px;
+        padding: 75px 30px;
+
+    }
+}
+
 
 .footer__items p{
     color: #5F5F5F;

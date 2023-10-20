@@ -3,11 +3,12 @@ import UserHeader from '@/components/Blocks/Header/UserHeader/UserHeader'
 import UserMain from '@/components/Blocks/Main/UserMain/UserMain'
 import UserContainer from '@/components/Containers/UserContainer/UserContainer'
 import { NextPage } from 'next'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './../components/Blocks/Main/UserMain/UserMain.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { setToken } from '@/redux/tokenSlice'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 
 interface userPageProps{
   token: string;
@@ -17,7 +18,14 @@ const user:NextPage<userPageProps> = () => {
   const dispatch = useDispatch()
   const router = useRouter()
   let status:string;
+  const [isSpecial, setIsSpecial] = useState<boolean>(false)
   useEffect(() => {
+    const isCode = localStorage.getItem('special')
+    if (isCode){
+      setIsSpecial(true)
+    } else {
+      setIsSpecial(false)
+    }
     const token = localStorage.getItem('token')
     if (token){
       dispatch(setToken(token))
@@ -31,6 +39,9 @@ const user:NextPage<userPageProps> = () => {
   }, [])
   return (
     <>
+    <Head>
+      <title>Parcus | Пользователь</title>
+    </Head>
     <UserContainer>
         <UserHeader />
         <UserMain>

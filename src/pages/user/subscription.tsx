@@ -15,14 +15,6 @@ import { useRouter } from 'next/router'
 const subscription:NextPage = () => {
   const router = useRouter()
   const dispatch = useDispatch()
-  const { loading, error, data } = useQuery( 
-    GET_SUBSCRIPTIONS,
-    {
-      variables: {
-        id: '5a07ce95-91f5-40c4-94e3-3e36230e20ae',
-      },
-    }
-  );
     let status:string;
     useEffect(() => {
       const token = localStorage.getItem('token')
@@ -36,11 +28,6 @@ const subscription:NextPage = () => {
         router.push('/login')
       }
     }, [])
-    useEffect(() => {
-      if (data) {
-        const subscription = data.subscription;
-      }
-    }, []);
 
 
   return (

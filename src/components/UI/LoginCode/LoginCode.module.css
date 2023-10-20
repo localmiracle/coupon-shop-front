@@ -1,0 +1,21 @@
+.inputs{
+    display: flex;
+    gap: 15px;
+    margin-bottom: 272px;
+}
+
+.input{
+    padding: 25px 20px;
+    border-radius: 10px;
+    border: 1px solid #CCC5B9;
+    background: #FFFCF2;
+    color: #CCC5B9;
+    font-size: 36px;
+    font-weight: 500;
+    width: 30px;
+    height: 30px;
+}
+
+.error{
+    border: 1px solid red;
+}

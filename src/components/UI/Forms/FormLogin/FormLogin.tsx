@@ -11,6 +11,8 @@ import { error } from 'console'
 import { useRouter } from 'next/router'
 import { setValues } from '@/redux/valueSlice'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import Logo from '@/components/Blocks/Header/HomeHeader/HomeHeaderElements/Logo/Logo'
+import LoginCode from '../../LoginCode/LoginCode'
 
 const FormLogin = () => {
   
@@ -27,6 +29,11 @@ const FormLogin = () => {
   const success = useSelector((state:RootState) => state.messages.success)
   const [isEmail, setIsEmail] = useState<boolean>(false);
   const [channel, setChannel] = useState('phone')
+  const [special, setSpecial] = useState<boolean>(false);
+
+  const isSpecial = () =>{
+    setSpecial(true)
+  }
   //
   //Обнулить состояния при размонтировании компонента (при переходе на другую страницу)
   useEffect(() => {
@@ -98,7 +105,7 @@ const FormLogin = () => {
       }
       const resource = email ? email : phone;
       try {
-          const response = await fetch('http://parcus.shop/api/auth', {
+          const response = await fetch(`http://parcus.shop${email ? ':3000' : ''}/api/auth`, {
               method: 'POST',
               headers: {
               'Content-Type': 'application/json',
@@ -122,7 +129,7 @@ const FormLogin = () => {
     dispatch(setErrors(''))
     dispatch(setValues(['','','','']))    
     try {
-      const response = await fetch('hhttp://parcus.shop/api/otp/send', {
+      const response = await fetch('http://parcus.shop/api/otp/send', {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json',
@@ -171,16 +178,24 @@ const FormLogin = () => {
   }
 
   const handleBack = () => {
-    if (token) {
-      dispatch(setToken(''));
-    } else {
-      router.push('/');
-    }
+    setSpecial(false)
+    dispatch(setEmail(''))
+    dispatch(setPhone(''))
   }
   return (
     <form onSubmit={authRequest} className={styles.formLogin}>
-        <div className={styles.back}><ArrowBackIcon onClick={handleBack} style={{fontSize: '30px'}}/></div>
-        <h1>ShopSmart</h1>
+      {(special || email || phone)? <div className={styles.back}><ArrowBackIcon onClick={handleBack} style={{fontSize: '30px'}}/>
+      </div> : null}
+      <Logo />
+      
+      {special? 
+        <>
+          <p className={styles.special}>Впишите Ваш индвидуальный код в поле ввода ниже</p>
+          <LoginCode errors={errors} />
+        </> 
+      : 
+      <>
+    
         { token 
         ? 
         <>
@@ -192,6 +207,7 @@ const FormLogin = () => {
         <p className={styles.grey}>Введите его ниже</p> 
         <div className={styles.verif}>
           <Verification errors={errors}/>
+          
         </div>
           { errors === 'Неверный код' ? <h3 style={{color: 'red'}}>{errors}</h3> : null}
           { success  ? <h3 style={{color: 'green'}}>{success}</h3> : null}
@@ -237,6 +253,8 @@ const FormLogin = () => {
             placeholder='Email' 
             className={styles.email}/>
         </div>
+
+        <p className={styles.auth_code} onClick={isSpecial}>Авторизироваться через индивидуальный код</p>
         <button 
         type='button'
         onClick={authRequest}
@@ -254,6 +272,7 @@ const FormLogin = () => {
               onChange={handleChangeNumberPhone} 
               placeholder='_ _ _  _ _ _  _ _  _ _' />
           </div>
+          <p className={styles.auth_code} onClick={isSpecial}>Авторизироваться через индивидуальный код</p>
           <button 
           type='button'
           onClick={authRequest}
@@ -262,6 +281,8 @@ const FormLogin = () => {
         }
         </>  
         }
+      </>}
+        
         
     </form>
   )

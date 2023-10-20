@@ -56,7 +56,7 @@ const Authorization:FC<AuthorizationProps> = ({handleToggleModal}) => {
         </>
         :
         <>
-        <Link href={'/login'} className={styles.signIn}>Вход</Link>
+        <Link href={'/login'} className={styles.signIn}>Вход/Регистрация</Link>
         
         </>}
     </div>

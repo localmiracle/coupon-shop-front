@@ -36,12 +36,13 @@ const HomePage:NextPage = () => {
       
   
   return (
-    <>
+    <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
         <Head>
-            <title>ShopSmart | Главная</title>
+            <title>Parcus | Главная</title>
             <meta name="description" content="ShopSmart - твоё интернет хранилище подписок" />
             <link rel="icon" href="/testIcon.png" />
         </Head>
+        
         <HomeHeader />
         <HomeContainer >
             
@@ -49,7 +50,8 @@ const HomePage:NextPage = () => {
             <HomeMain productList={productList}/> 
         </HomeContainer>
         <Footer />
-    </>
+
+  </div>
   )
 }
 

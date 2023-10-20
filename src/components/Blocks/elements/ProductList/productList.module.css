@@ -16,6 +16,13 @@
     border-radius: 50%;
 }
 
+@media (max-width: 1200px){
+    .arrowRight{
+        right: -10px;
+    }
+}
+
+
 .arrowLeft{
     position: absolute; 
     left: -20px;

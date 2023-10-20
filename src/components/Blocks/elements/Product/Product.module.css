@@ -9,6 +9,13 @@
     border-radius: 10px;
 }
 
+@media (max-width: 1200px){
+    .list__item{
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
 .edits{
     top: 0;
     right: 0;
@@ -20,14 +27,15 @@
 .info{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     
 }
+
 
 .info>div{
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 7px;
+    margin-bottom: 26px;
 }
 
 .list__item>h3{
@@ -49,14 +57,28 @@
     max-width: 140px;
 }
 
-.price{
-    text-align: center;
-    color: #000;
+.level{
+    color: #989898;
     font-family: Inter;
-    font-size: 13px;
+    font-size: 14px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    margin-bottom: 8px;
+}
+
+.price{
+    padding: 11px 78px;
+    border-radius: 10px;
+    background: #E8E8E8;
+    text-align: center;
+    color: #252422;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 7px;
 }
 
 .btn{

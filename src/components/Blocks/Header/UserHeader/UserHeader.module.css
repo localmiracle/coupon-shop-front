@@ -6,6 +6,12 @@
     margin-bottom: 40px;
 }
 
+@media (max-width: 1200px){
+    .header{
+        padding: 40px 30px;
+    }
+}
+
 .header__container{
     display: flex;
     align-items: center;

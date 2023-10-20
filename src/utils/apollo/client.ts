@@ -6,8 +6,7 @@ let apolloClient: ApolloClient<any>;
 
 function createApolloClient() {
   return new ApolloClient({
-    // uri: "https://shop-smart-api-1c3c0f010f3b.herokuapp.com/query",
-    uri: "http://95.163.228.158",
+    uri: "http://parcus.shop",
     cache: new InMemoryCache(),
     
   });

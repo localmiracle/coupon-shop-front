@@ -1,19 +1,29 @@
 .top{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 30px;
     margin-bottom: 60px;
+    margin-left: -73px;
+}
+
+@media (max-width: 1200px){
+    .top{
+        margin-left: 0px;
+    }
+    .right{
+        margin-bottom: 20px;
+        border-radius: 10px;
+        display: none;
+    }
 }
 
 .ads{
     position: relative;
-    height: 188px;
-    display: flex;
-    flex-direction: column;
+    height: 188px;  
     background-color: #cdcdcd;
     border-radius: 10px;
     margin-bottom: 30px;
 }
-
 
 .left>h1{
     width: 553px;
@@ -37,6 +47,8 @@
 }
 
 
+
+
 .right{
     background-color: #cdcdcd;
     width: 180px;
@@ -46,9 +58,21 @@
 .bottom{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     margin-bottom: 50px;
-    gap: 40px;
+    gap: 45px;
+}
+
+@media (max-width: 1600px){
+    .bottom{
+        gap: 45px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .bottom__right {
+      display: none;
+    }
 }
 
 .bottom h3{

@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import SearchIcon from '@mui/icons-material/Search';
-
+import styles from './search.module.css'
 
 const Search:FC = () => {
 
@@ -8,7 +8,7 @@ const Search:FC = () => {
 
   return (
     <div>
-        <input type="text" style={{border: '1px solid #CCC5B9', paddingLeft: '15px', paddingTop: '6px', paddingBottom: '6px'}}/>
+        <input type="text" className={styles.input}/>
         <SearchIcon onClick={()=>console.log('Поиск...')}
         style={{ 
         borderRadius: '0px 10px 10px 0px', 
