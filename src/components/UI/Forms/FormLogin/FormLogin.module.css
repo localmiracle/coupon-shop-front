@@ -13,6 +13,13 @@
   
 }
 
+.cancel{
+    position: absolute;
+    top: 41px;
+    right: 41px;
+    cursor: pointer;
+}
+
 .formLogin h1{
     color: #EB5E28;
     margin-bottom: 15px;
@@ -31,6 +38,10 @@
     align-items: center;
 }
 
+.verif > input::placeholder {
+    color: #CCC5B9;
+}
+
 .verif > p{
     border-radius: 25px 0px 0px 25px;
     border: 1px solid #BBB;
@@ -42,8 +53,6 @@
     font-style: normal;
     font-weight: 600;
     line-height: normal;
-
-
 }
 
 .input{
@@ -72,9 +81,11 @@
     font-size: 26px;
     font-weight: 600;
     border-radius: 25px;
+    color: #bbb;
     border: 1px solid #CCC5B9;
-    background: #FFFCF2;
-    padding: 9px 10px;
+    background: #fff;
+    padding: 12px;
+    padding-left: 23px;
     text-align: left;
 }
 
@@ -121,13 +132,13 @@
     font-weight: 600;
     border-radius: 25px;
     border: 1px solid #CCC5B9;
-    background: #FFFCF2;
+    background: #fff;
     padding: 4px;
 }
 
 .choice__item{
     cursor: pointer;
-    padding: 9px 33px;
+    padding: 17px 66px;
     border-radius: 22px;
 }
 

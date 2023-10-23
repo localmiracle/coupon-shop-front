@@ -41,6 +41,7 @@ const user:NextPage<userPageProps> = () => {
     <>
     <Head>
       <title>Parcus | Пользователь</title>
+      <link rel="icon" href="/Frame 22.png" />
     </Head>
     <UserContainer>
         <UserHeader />

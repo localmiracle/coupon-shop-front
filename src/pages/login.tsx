@@ -11,7 +11,7 @@ const login:NextPage = () => {
     <>
       <Head>
         <title>Parcus | Вход</title>
-        <link rel="icon" href="/testIcon.png" />
+        <link rel="icon" href="/favicon.svg" />
       </Head>
       <LoginContainer >
         <FormLogin />

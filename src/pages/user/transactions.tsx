@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@/redux/store'
 import { setToken } from '@/redux/tokenSlice'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 
 
 
@@ -31,6 +32,9 @@ const Transactions:NextPage = ({}) => {
   }, [])
   return (
     <>
+    <Head>
+      <link rel="icon" href="/Frame 22.png" />
+    </Head>
     <UserContainer>
         <UserHeader />
         <UserMain> 

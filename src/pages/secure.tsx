@@ -7,6 +7,9 @@ import { NextPage } from 'next'
 import React, { useEffect, useState } from 'react'
 import Organisations from '@/components/Blocks/elements/Admin/Organisations/Organisations'
 import Head from 'next/head'
+import axios from 'axios'
+import { API_URL } from '@/http'
+
 
 
 
@@ -16,19 +19,30 @@ const adminPage:NextPage = () => {
   const refreshData = async ()=>{
 
   }
-  useEffect(()=>{
-    const time = localStorage.getItem('time')
-    const currentTime = Math.floor(Date.now()/1000)
-    if (time){
-      if (currentTime > parseInt(time)){
-
-      }
+  const IsAuth = async() =>{
+    try{
+      const response = await axios.get(`${API_URL}/auth/refresh`,{withCredentials:true})
+      console.log(response);
+      localStorage.setItem('admitToken', response.data.accessToken)
+      setStatus(true)
+    } catch(e:any){
+      console.log(e.response?.data?.message);
     }
+  }
+  // useEffect(()=>{
+  //   const time = localStorage.getItem('time')
+  //   const currentTime = Math.floor(Date.now()/1000)
+  //   if (time){
+  //     if (currentTime > parseInt(time)){
+  //       IsAuth()
+  //     }
+  //   }
     
-  },[])
+  // },[])
   useEffect(()=>{
     const adminToken = localStorage.getItem('adminToken')
         if (adminToken){
+          IsAuth()
           setStatus(true)
           setToken(localStorage.getItem('adminToken'))
         } else {
@@ -45,6 +59,7 @@ const adminPage:NextPage = () => {
     <>
       <Head>
         <title>Parcus | Администратор</title>
+        <link rel="icon" href="/Frame 22.png" />
       </Head>
       <AdminContainer>
         {status ? 

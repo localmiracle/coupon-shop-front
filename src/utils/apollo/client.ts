@@ -6,7 +6,7 @@ let apolloClient: ApolloClient<any>;
 
 function createApolloClient() {
   return new ApolloClient({
-    uri: "http://parcus.shop",
+    uri: "http://parcus.shop:3000/query",
     cache: new InMemoryCache(),
     
   });

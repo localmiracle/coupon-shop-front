@@ -1,9 +1,13 @@
 .top{
     display: flex;
-    justify-content: center;
     gap: 30px;
     margin-bottom: 60px;
-    margin-left: -73px;
+}
+
+@media (min-width: 2000px) {
+    .top{
+        justify-content: center;
+    }
 }
 
 @media (max-width: 1200px){
@@ -51,21 +55,32 @@
 
 .right{
     background-color: #cdcdcd;
-    width: 180px;
-    height: 370px;
+    width: 271px;
+    height: 502px;
 }
 
 .bottom{
     display: flex;
     align-items: center;
-    justify-content: center;
     margin-bottom: 50px;
     gap: 45px;
+}
+
+@media (min-width: 2000px){
+    .bottom{
+        justify-content: center;
+    }
 }
 
 @media (max-width: 1600px){
     .bottom{
         gap: 45px;
+    }
+}
+
+@media (max-width: 1600px) {
+    .bottom__right {
+      transform: scale(0.8);
     }
 }
 

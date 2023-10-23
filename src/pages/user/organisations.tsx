@@ -10,6 +10,7 @@ import { RootState } from '@/redux/store'
 import { useDispatch, useSelector } from 'react-redux'
 import { setToken } from '@/redux/tokenSlice'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 
 interface orgPageProps{
   token: string;
@@ -34,6 +35,9 @@ const organisations:NextPage<orgPageProps> = ({token}) => {
   const jwt = token;
   return (
     <>
+    <Head>
+      <link rel="icon" href="/Frame 22.png" />
+    </Head>
     <UserContainer>
         <UserHeader />
         <UserMain> 

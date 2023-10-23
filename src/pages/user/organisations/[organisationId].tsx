@@ -12,6 +12,7 @@ import { NextPage } from 'next';
 import SwitchButtons from '@/components/UI/Buttons/SwitchButtons/SwitchButtons';
 import UsersTable from '@/components/Blocks/elements/UsersTable/UsersTable';
 import { setToken } from '@/redux/tokenSlice';
+import Head from 'next/head';
 
 interface orgPageProps{
   token:string
@@ -62,6 +63,9 @@ const OrganisationPage:NextPage<orgPageProps> = ({token}) => {
   
   return (
     <>
+    <Head>
+      <link rel="icon" href="/Frame 22.png" />
+    </Head>
     <UserContainer>
         <UserHeader />
         <UserMain> 

@@ -11,6 +11,7 @@ import { useQuery } from '@apollo/client'
 import { GET_SUBSCRIPTIONS } from '@/utils/graphql/query/queries'
 import { setToken } from '@/redux/tokenSlice'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 
 const subscription:NextPage = () => {
   const router = useRouter()
@@ -32,6 +33,9 @@ const subscription:NextPage = () => {
 
   return (
     <>
+    <Head>
+      <link rel="icon" href="/Frame 22.png" />
+    </Head>
     <UserContainer>
         <UserHeader />
         <UserMain> 

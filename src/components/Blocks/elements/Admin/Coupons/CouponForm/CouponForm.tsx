@@ -53,7 +53,6 @@ const CouponForm:FC<CouponFormProps> =({ token, coupon, data, setIsEdit,setIsEdi
     e.preventDefault()
     const dataName = newName? newName : name;
     const dataDescription = newDescription? newDescription : description;
-    const dataLevel = newLevel ? parseInt(newLevel, 10) : parseInt(level, 10);
     const dataPrice = newPrice? parseInt(newPrice,10) : parseInt(price,10);
     const response = await fetch(`http://parcus.shop/admin/coupon/${coupon}`,
     {
@@ -65,14 +64,14 @@ const CouponForm:FC<CouponFormProps> =({ token, coupon, data, setIsEdit,setIsEdi
       body: JSON.stringify({
         name: dataName,
         description: dataDescription,
-        level: dataLevel,
         price: dataPrice,
       })
     })
+    setSuccess('Изменения применены!')
     const res = response.json()
     setTimeout(() => {
       setIsEdited(true)
-      setSuccess('Изменения применены!')
+      setIsEdit(false)
     }, 3000);
     setTimeout(() => {
       setIsEdited(false)
@@ -100,11 +99,7 @@ const CouponForm:FC<CouponFormProps> =({ token, coupon, data, setIsEdit,setIsEdi
             placeholder="Изменить цену.."
             value={newPrice}
             onChange={handleChangePrice}/>
-            <p>Уровень:{level}</p>
-            <input type="text" 
-            placeholder="Изменить уровень.."
-            value={newLevel}
-            onChange={handleChangeLevel}/>
+           
             {success ? <p style={{color: 'green'}}>{success}</p> : null}
             <button onClick={changeData}>Изменить</button>
             

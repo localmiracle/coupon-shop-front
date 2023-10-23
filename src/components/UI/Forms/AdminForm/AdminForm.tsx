@@ -53,7 +53,7 @@ const AdminForm = () => {
         } 
         setTimeout(() => {
           location.reload()
-        }, 15000);
+        }, 3000);
         
     }
   return (

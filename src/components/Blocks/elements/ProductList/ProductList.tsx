@@ -14,8 +14,11 @@ const ProductList:FC<ProductListProps> = ({productList, handleEditProduct, handl
      
   return (
     <div className={styles.items}>
+        
+        {(Array.isArray(productList)&& productList.length>0) ? 
+        <>
         <KeyboardArrowLeftIcon className={styles.arrowLeft}/>
-        {Array.isArray(productList) ? productList.map((item:any) => 
+        {productList.map((item:any) => 
         <Product key={item.id}
         id={item.id} 
         image={item.content_url} 
@@ -25,8 +28,10 @@ const ProductList:FC<ProductListProps> = ({productList, handleEditProduct, handl
         price={item.price}
         handleEditProduct={()=>handleEditProduct(item.id)}
         handleDeleteProduct={() => handleDeleteProduct(item.id)} />
-        ) : <div>Товары не найдены</div>}
+        )} 
         <KeyboardArrowRightIcon className={styles.arrowRight}/>
+        </>: <div>Товары не найдены</div>}
+       
     </div>
   )
 }

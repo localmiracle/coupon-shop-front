@@ -14,14 +14,9 @@ const HomePage:NextPage = () => {
     const systemToken = localStorage.getItem('token')
     setToken(systemToken)
      const getCoupons = async() => {
-      const response = await fetch('http://parcus.shop/api/coupons', 
+      const response = await fetch('http://parcus.shop/api/coupons/standard', 
       {
-        
-          method: "GET",
-          headers: {
-          "Content-Type": "application/json",
-           Authorization: `Bearer ${systemToken}`,
-          },        
+               
       })
       const data = await response.json()
       setProductList(data)
@@ -40,13 +35,11 @@ const HomePage:NextPage = () => {
         <Head>
             <title>Parcus | Главная</title>
             <meta name="description" content="ShopSmart - твоё интернет хранилище подписок" />
-            <link rel="icon" href="/testIcon.png" />
+            <link rel="icon" href="/Frame 22.png" />
         </Head>
         
         <HomeHeader />
         <HomeContainer >
-            
-            
             <HomeMain productList={productList}/> 
         </HomeContainer>
         <Footer />

@@ -13,6 +13,8 @@ import { setValues } from '@/redux/valueSlice'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Logo from '@/components/Blocks/Header/HomeHeader/HomeHeaderElements/Logo/Logo'
 import LoginCode from '../../LoginCode/LoginCode'
+import Cancel from './../../../../../public/cancel.png'
+import Image from 'next/image'
 
 const FormLogin = () => {
   
@@ -105,7 +107,7 @@ const FormLogin = () => {
       }
       const resource = email ? email : phone;
       try {
-          const response = await fetch(`http://parcus.shop${email ? ':3000' : ''}/api/auth`, {
+          const response = await fetch(`http://parcus.shop/api/auth`, {
               method: 'POST',
               headers: {
               'Content-Type': 'application/json',
@@ -178,13 +180,20 @@ const FormLogin = () => {
   }
 
   const handleBack = () => {
-    setSpecial(false)
+    router.push('/')
+  }
+  const handleBackToAuth = () =>{
+    dispatch(setToken(''))
     dispatch(setEmail(''))
     dispatch(setPhone(''))
+    setSpecial(false)
   }
   return (
     <form onSubmit={authRequest} className={styles.formLogin}>
-      {(special || email || phone)? <div className={styles.back}><ArrowBackIcon onClick={handleBack} style={{fontSize: '30px'}}/>
+       <Image src={Cancel} alt={'/'} className={styles.cancel} onClick={handleBack}/>
+      {(token || special) ?  
+      <div className={styles.back}>
+        <ArrowBackIcon onClick={handleBackToAuth} style={{fontSize: '30px'}}/>
       </div> : null}
       <Logo />
       

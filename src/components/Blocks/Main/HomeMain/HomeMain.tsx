@@ -34,8 +34,7 @@ const HomeMain:FC<HomeMainProps> = ({productList}) => {
             <div className={styles.bottom__right}>
                 <Image 
                 src={Man} 
-                alt={'ManIcon'}
-                style={{marginTop: '-40px'}}></Image>
+                alt={'ManIcon'}></Image>
             </div>
         </section>
        
