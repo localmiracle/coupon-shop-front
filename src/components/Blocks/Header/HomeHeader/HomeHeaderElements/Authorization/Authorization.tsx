@@ -2,11 +2,13 @@ import React, { FC, useEffect, useState } from 'react'
 import styles from './Authorization.module.css'
 import Link from 'next/link';
 import Image from 'next/image';
-import Profile from './../../../../../../../public/IconProfile.png'
+import Profile from './../../../../../../../public/icons/Group.png'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { useDispatch } from 'react-redux';
 import { setToken } from '@/redux/tokenSlice';
+import signOut from './../../../../../../../public/icons/signout.png'
+import key from './../../../../../../../public/icons/key.png'
 
 interface AuthorizationProps{
     handleToggleModal: () =>  void;
@@ -49,8 +51,15 @@ const Authorization:FC<AuthorizationProps> = ({handleToggleModal}) => {
             { isOpen ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </div>
           <div className={isOpen ? `${styles.profile__list} ${styles.open}` : `${styles.profile__list}`}>
-            <Link href={'/user'}>Личный кабинет</Link>
-            <button onClick={handleSignOut}>Выйти</button>
+            <div>
+              <Image src={key} alt={''} />
+              <Link href={'/user'}>Личный кабинет</Link>
+            </div>
+              <div onClick={handleSignOut}>
+                <Image src={signOut} alt={''} />
+                <button>Выйти</button>
+              </div>
+            
           </div>
          
         </>

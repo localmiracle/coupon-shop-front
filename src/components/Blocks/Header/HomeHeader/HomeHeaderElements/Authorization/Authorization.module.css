@@ -13,7 +13,6 @@
     font-weight: 600;
     line-height: normal;
     cursor: pointer;
-    background-color: #CCC5B9;
     border-radius: 10px;
     padding: 6px 15px;
 }
@@ -38,9 +37,6 @@
     align-items: center;
     padding: 6px 41px 6px 10px;
     border-radius: 10px 10px 0px 0px;
-    border: 1px solid #D6D6D6;
-    background: #D9D9D9;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.05);
 }
 
 .profile__menu>p{
@@ -51,8 +47,7 @@
 }
 
 .profile__list{
-    
-    border-top: 1px solid #C3C3C3;
+    border: 1px solid #C3C3C3;
     visibility: hidden;
     opacity: 0;
     display: flex;
@@ -61,31 +56,40 @@
     top: 100%;
     right: 0;
     position: absolute;
-    background-color: #D9D9D9;
+    background-color: #FFFCF2;
     border-radius: 0px 0px 5px 5px;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.05);
     z-index: 5;
     transition: opacity 500ms ease;
 }
 
-.profile__list>a{
+.profile__list>div{
+    border-bottom: 1px solid #C3C3C3;
+}
+
+.profile__list div{
+    display: flex;
+    align-items: center;
+    padding: 10px 20px 10px 13px;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.profile__list div>a{
     color: #404040;
     font-size: 15px;
     font-style: normal;
     font-weight: 600;
     white-space: nowrap;
     text-align: left;
-    padding: 9px 46px 10px 10px;
-    border-bottom: 1px solid #C3C3C3;;
 }
-.profile__list>button{
+.profile__list div>button{
     border-radius: 0px 0px 10px 10px;
-    color: #404040;
+    color: #AA3232;
     font-size: 15px;
     font-style: normal;
     font-weight: 600;
     text-align: left;
-    padding: 9px 46px 10px 10px;
     cursor: pointer;
     outline: none;
     border: none;

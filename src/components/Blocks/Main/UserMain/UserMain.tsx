@@ -58,7 +58,7 @@ const UserMain:FC<UserMainProps> = ({children}) => {
                 <Link 
                 href={'/user'}
                 onClick={()=> handleLinkClick('settings')}
-                className={activePage === 'settings' ? styles.activePage : ''}>Настройка</Link>
+                className={activePage === 'settings' ? styles.activePage : ''}>Настройки</Link>
             </div>
             <div className={styles.left__item}>
               

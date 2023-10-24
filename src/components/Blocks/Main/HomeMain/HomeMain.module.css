@@ -69,6 +69,7 @@
 @media (min-width: 2000px){
     .bottom{
         justify-content: center;
+        margin-left: -93px
     }
 }
 
