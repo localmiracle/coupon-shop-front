@@ -19,6 +19,9 @@ const Verification:FC<VerificationProps> = ({errors}) => {
     useEffect(() => {
       
       inputRefs.current[0]?.current?.focus();
+      return () => {
+        dispatch(setValues(["","","",""]));
+      }
     }, []);
   
     const handleChange = (

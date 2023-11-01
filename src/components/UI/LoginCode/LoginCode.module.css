@@ -1,19 +1,19 @@
 .inputs{
     display: flex;
-    gap: 15px;
-    margin-bottom: 272px;
+    gap: 7px;
+    margin-top: 49px;
 }
 
 .input{
-    padding: 25px 20px;
+    padding: 25px 15px 25px 25px;
     border-radius: 10px;
     border: 1px solid #CCC5B9;
     background: #FFFCF2;
     color: #CCC5B9;
     font-size: 36px;
     font-weight: 500;
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
 }
 
 .error{
