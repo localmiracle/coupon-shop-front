@@ -1,5 +1,26 @@
 .location{
+    user-select: none;
     display: flex;
     align-items: center;
     gap: 5px;
+    cursor: pointer;
+}
+
+.location > p {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.location_select {
+    user-select: none;
+    position: absolute;
+    display: block;
+    left: 18px;
+    top: 55px;
+    line-height: 1.4;
+}
+
+.location_select > p:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }
