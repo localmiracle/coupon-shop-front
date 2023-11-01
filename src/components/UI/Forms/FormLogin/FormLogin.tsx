@@ -121,7 +121,7 @@ const FormLogin = () => {
     if (sendable) {
       const resource = email ? email : phone;
       try {
-        const response = await fetch(`http://parcus.shop/api/auth`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -149,7 +149,7 @@ const FormLogin = () => {
     dispatch(setErrors(""));
     dispatch(setValues(["", "", "", ""]));
     try {
-      const response = await fetch("http://parcus.shop/api/otp/send", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/otp/send`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -177,7 +177,7 @@ const FormLogin = () => {
 
   const authVerify = async () => {
     const code = values.join("");
-    const response = await fetch("http://parcus.shop/api/otp/verify", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/otp/verify`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -17,7 +17,7 @@ const Organisations:FC<OrganisationsProps> = ({token}) => {
     const [orgById, setOrgById] = useState<any>()
     useEffect(() => {
       const getOrgsList = async () =>{
-        const response = await fetch('http://parcus.shop/admin/organization',{
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/organization`,{
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -50,7 +50,7 @@ const Organisations:FC<OrganisationsProps> = ({token}) => {
     const createOrganization = async(e:any) =>{
         e.preventDefault()
         const dataLevel = parseInt(level,10)
-        const response = await fetch('http://parcus.shop/admin/organization',
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/organization`,
         {
             method: "POST",
               headers: {
@@ -79,7 +79,7 @@ const Organisations:FC<OrganisationsProps> = ({token}) => {
     }
 
     const getOrganisationById = async() =>{
-        const response = await fetch(`http://parcus.shop/admin/organization/${value}`,
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/organization/${value}`,
             {
                 method: "GET",
                   headers: {

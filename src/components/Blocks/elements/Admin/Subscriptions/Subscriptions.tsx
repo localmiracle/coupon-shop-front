@@ -13,7 +13,7 @@ const Subscriptions:FC<SubProps> = ({token}) => {
     useEffect(() => {
        const getSubscriptions = async() => {
         
-        const response = await fetch('http://parcus.shop/admin/subscription',
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/subscription`,
         {
             method: "GET",
             headers: {

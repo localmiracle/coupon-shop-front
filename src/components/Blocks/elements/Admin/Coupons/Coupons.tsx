@@ -20,7 +20,7 @@ const Coupons:FC<CouponProps> = ({token}) => {
     const [isEdited, setIsEdited] = useState<boolean>(false)
     useEffect(() => {
       const getCoupons = async() => {
-      const response = await fetch('http://parcus.shop/admin/coupon', 
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/coupon`, 
       {
         
           method: "GET",
@@ -47,7 +47,7 @@ const Coupons:FC<CouponProps> = ({token}) => {
         setId(productId)
     };
     const handleDeleteProduct = async (productId: any) => {
-      const response = await fetch(`http://parcus.shop/admin/coupon/${productId}`,
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}admin/coupon/${productId}`,
       {
         method: "DELETE",
         headers: {

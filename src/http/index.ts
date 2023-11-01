@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const API_URL = 'http://parcus.shop/admin'
+export const API_URL = `${process.env.NEXT_PUBLIC_API_URL}/admin`
 
 const $api = axios.create({
     withCredentials: true,

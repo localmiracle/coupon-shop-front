@@ -48,7 +48,7 @@ const EditForm:FC<EditFormProps> = ({token, subId, data, setIsEdit,setIsEdited})
         const dataName = newName? newName : name;
         const dataDescription = newDescription? newDescription : description;
         const dataPrice = newPrice? parseInt(newPrice,10) : parseInt(price,10);
-        const response = await fetch(`http://parcus.shop/admin/subscription/${subId}`,
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/subscription/${subId}`,
         {
           method: "PUT",
           headers: {

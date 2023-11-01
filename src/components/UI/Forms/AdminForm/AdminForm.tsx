@@ -29,7 +29,7 @@ const AdminForm = () => {
         e.preventDefault()
         try {
           const response = await fetch(
-            "http://parcus.shop/admin/auth/sing-in",
+            `${process.env.NEXT_PUBLIC_API_URL}/admin/auth/sing-in`,
             {
               method: "POST",
               headers: {

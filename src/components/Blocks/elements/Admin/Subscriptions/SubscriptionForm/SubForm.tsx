@@ -27,7 +27,7 @@ const SubForm:FC<SubFormProps> = ({token}) => {
         const dataLevel = parseInt(level, 10)
         const dataPrice = parseInt(price, 10);
         
-        const response = await fetch('http://parcus.shop/admin/subscription',
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/subscription`,
         {
             method: "POST",
             headers: {

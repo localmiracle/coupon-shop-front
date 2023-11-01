@@ -14,7 +14,7 @@ const HomePage:NextPage = () => {
     const systemToken = localStorage.getItem('token')
     setToken(systemToken)
      const getCoupons = async() => {
-      const response = await fetch('http://parcus.shop/api/coupons/standard', 
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/coupons/standard`, 
       {
                
       })

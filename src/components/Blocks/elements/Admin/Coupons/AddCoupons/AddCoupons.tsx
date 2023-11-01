@@ -42,7 +42,7 @@ const AddCoupons:FC<AddCouponsProps> = ({token, setIsAdded}) => {
         formData.append("description", description);
         formData.append("price", price);
         formData.append("level", level);
-        const response = await fetch('http://parcus.shop/admin/coupon',
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/coupon`,
         {
             method: "POST",
             headers: {

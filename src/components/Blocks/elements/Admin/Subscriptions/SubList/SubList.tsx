@@ -35,7 +35,7 @@ const SubList:FC<SubListProps> = ({subs, setIsDeleted, setIsEdited }) => {
         setIsDelete(true)
     }
     const handleDeleteSub = async(subId:any) => {
-        const response = await fetch(`http://parcus.shop/admin/subscription/${subId}`,
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/subscription/${subId}`,
         {
             method: "DELETE",
             headers: {
