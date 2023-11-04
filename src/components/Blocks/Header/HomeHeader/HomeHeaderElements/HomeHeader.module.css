@@ -1,128 +1,244 @@
-.header__container{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 26px;
-    padding: 33px 100px 20px 100px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1)
+.header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 26px;
+  padding: 33px 100px 20px 100px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
 }
 
-@media (max-width: 1200px){
-    .header__container{
-        flex-direction: column;
-        gap: 10px;
-        padding-right: 10px;
-        padding-left: 10px;
-    }
-    .header__container div:nth-child(1){
-        margin-top: -30px;
-        order: 2;
-    }
-    .header__container div:nth-child(2){
-        order: 3;
-    }
-    .header__container div:nth-child(3){
-        order: 1;
-        align-self: end;
-    }
-    
-    /* изменения для шапки здесь */
-}
-
-@media (min-width:2000px){
-    .header__container{
-        justify-content: center;
-        gap: 100px;
-    }
-}
-
-.header__logo{
-    position: relative;
-}
-.header__logo > div{
-    margin-top: 10px;
-    display: flex;
-}
-
-.header__search{
-    
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.header__search>div{
-    display: flex;
-    
-}
-
-.header__search>div>input{
-    border-radius: 10px 0px 0px 10px;
-    width: 600px;
-}
-
-.catalog{
-    display: flex;
-    visibility: hidden;
-    position: absolute;
-    width: 100%;
-    top: 100px;
-    left: 0;
-    z-index: 999;
-    background: rgba(0, 0, 0, 0.57);
-}
-
-@media (max-width: 1200px){
-    .catalog{
-        top: 195px;
-    }
-}
-
-.show{
-    visibility: visible;
-}
-
-.catalog__container{
-    background-color: rgba(255, 252, 242, 1);
-    display: flex;
+@media (max-width: 1200px) {
+  .header__container {
     flex-direction: column;
-    padding-right: 17px;
-    padding-left: 95px;
-    padding-bottom: 700px;
+    gap: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+  .header__container div:nth-child(1) {
+    margin-top: -30px;
+    order: 2;
+  }
+  .header__container div:nth-child(2) {
+    order: 3;
+  }
+  .header__container div:nth-child(3) {
+    order: 1;
+    align-self: end;
+  }
+
+  /* изменения для шапки здесь */
 }
 
+@media (min-width: 2000px) {
+  .header__container {
+    justify-content: center;
+    gap: 100px;
+  }
+}
 
+.header__logo {
+  position: relative;
+}
+.header__logo > div {
+  margin-top: 10px;
+  display: flex;
+}
 
-@media (max-width: 1200px){
-    .catalog__container{
-        padding-left: 28px;
-    }
+.header__search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header__search > div {
+  display: flex;
+}
+
+.header__search > div > input {
+  border-radius: 10px 0px 0px 10px;
+  width: 600px;
+}
+
+.catalog {
+  display: flex;
+  visibility: hidden;
+  position: fixed;
+  width: 100%;
+  top: 105px;
+  left: 0;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.5);
+  max-height: 1346px;
+}
+
+@media (max-width: 1200px) {
+  .catalog {
+    top: 195px;
+  }
+}
+
+.show {
+  visibility: visible;
+}
+
+.catalog__container {
+  background-color: rgba(255, 252, 242, 1);
+  display: flex;
+  flex-direction: column;
+  padding-right: 17px;
+  padding-left: 100px;
+  height: 90vh;
+  max-height: 1240px;
+}
+
+@media (max-width: 1200px) {
+  .catalog__container {
+    padding-left: 28px;
+  }
 }
 
 .catalog_items {
-    width: 386px;
-    display: flex;
-    justify-content: space-between;
-    padding: 10px  10px 10px;
+  width: 386px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 10px 10px;
 }
 
-.catalog_items>div{
-    display: flex;
-    gap: 10px;
+.catalog_items > div {
+  display: flex;
+  gap: 10px;
 }
 
-.catalog_items:hover{
-    cursor: pointer;
-    border-radius: 5px;
-    background: #EAE6E0;
+.catalog_items:hover {
+  cursor: pointer;
+  border-radius: 5px;
+  background: #eae6e0;
 }
 
-.catalog_items p{
+.catalog_items p {
+  color: #404040;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
 
-    color: #404040;
-    font-family: Inter;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
+.catalog_category {
+  display: none;
+  background-color: #fffcf2;
+  width: 100%;
+  min-height: 100%;
+  border-left: 1px solid #ccc5b9;
+  padding: 1.5rem 0 0 4.12rem;
+  font-style: normal;
+  line-height: normal;
+}
+
+.catalog_category > h1 {
+  color: #252422;
+  font-family: Inter;
+  font-size: 2.6875rem;
+  font-weight: 600;
+  padding-bottom: 2.12rem;
+}
+
+.card_list {
+  display: flex;
+  width: fit-content;
+  gap: 1.63rem 2.25rem;
+  flex-wrap: wrap;
+}
+
+.card {
+  display: inline-flex;
+  padding: 10px;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  border-radius: 10px;
+  background: #fffcf2;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2);
+}
+
+.card_image {
+  padding: 107px 78px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  background: #bfb6a7;
+  width: fit-content;
+  color: #fffcf2;
+  font-family: Inter;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.card_image > p {
+  font-family: Inter;
+  font-size: 16px;
+}
+
+.card_info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 13.125rem;
+  gap: 1.625rem;
+}
+
+.card_info h2 {
+  color: #000;
+  font-family: Inter;
+  font-size: 1.1875rem;
+  font-weight: 700;
+  padding-bottom: 0.44rem;
+}
+
+.description {
+  color: #5a534b;
+  font-family: Inter;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  max-width: 11.5625rem;
+}
+
+.level {
+  color: #989898;
+  font-family: Inter;
+  font-size: 0.875rem;
+  font-weight: 700;
+  padding-bottom: 0.5rem;
+}
+
+.price {
+  width: fit-content;
+  padding: 0.6875rem 4.875rem;
+  border-radius: 0.625rem;
+  background: #e8e8e8;
+  margin-bottom: 0.44rem;
+}
+
+.price > span {
+  color: #252422;
+  font-family: Inter;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.card_info button {
+  display: flex;
+  padding: 0.75rem 4.4375rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  border: none;
+  border-radius: 0.625rem;
+  background: #eb5e28;
+  color: #fff;
+  font-family: Inter;
+  font-size: 1rem;
+  font-weight: 700;
 }
