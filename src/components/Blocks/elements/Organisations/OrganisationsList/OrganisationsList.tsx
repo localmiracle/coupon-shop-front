@@ -4,13 +4,11 @@ import Image from 'next/image'
 import styles from './OrganistaionsList.module.css'
 import { gql, useQuery } from '@apollo/client';
 import { useRouter } from 'next/router';
+import { useSelector } from 'react-redux';
+import { RootState } from "@/redux/store";
 
-interface organisationListProps{
-  token:string
-}
-
-const OrganisationsList:FC<organisationListProps> = ({token}) => {
-
+const OrganisationsList:FC = () => {
+  const token = useSelector((state: RootState) => state.token.token);
   const router = useRouter()
   const navToOrganisation = (organisationId: string) =>{
     router.push(`/user/organisations/${organisationId}`);

@@ -30,6 +30,7 @@ const Transactions:NextPage = ({}) => {
       router.push('/login')
     }
   }, [])
+
   return (
     <>
     <Head>

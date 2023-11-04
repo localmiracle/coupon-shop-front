@@ -2,16 +2,12 @@ import React, { FC, useState } from 'react'
 import styles from './Organisations.module.css'
 import OrganisationsList from './OrganisationsList/OrganisationsList'
 
-interface organisationsProps{
-  token: string;
-}
-
-const Organisations:FC<organisationsProps> = ({token}) => {
+const Organisations:FC = () => {
 
   return (
     <>
      
-      <OrganisationsList token={token}/>
+      <OrganisationsList/>
       
     </>
   )

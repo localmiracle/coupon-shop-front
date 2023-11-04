@@ -2,10 +2,10 @@ import React, { FC, useEffect, useState } from "react";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import styles from "./location.module.css";
 
-const cities = ["Москва", "Брянск", "Коломна", "Орехово", "Зуево"];
+const cities = ["Брянск", "Коломна", "Орехово-Зуево"];
 
 const Location: FC = () => {
-  const [currentCity, setCurrentCity] = useState<string>("Москва");
+  const [currentCity, setCurrentCity] = useState<string>("");
   const [showCityList, setShowCityList] = useState<boolean>(false);
 
   const toggleShowCity = () => {
@@ -15,6 +15,7 @@ const Location: FC = () => {
   useEffect(() => {
     const savedCity = localStorage.getItem("city");
     if (savedCity) setCurrentCity(savedCity);
+    else setCurrentCity(cities[0]);
   }, []);
 
   const handleCitySelected = (city: string) => {

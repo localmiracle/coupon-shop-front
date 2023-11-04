@@ -1,8 +1,9 @@
-.input{
+.search > input[type="text"] {
     border: 1px solid #CCC5B9; 
     padding-left: 15px;
     padding-top: 6px; 
     padding-bottom: 6px;
+    background-color: #FFFCF2;
 }
 
 /* @media (max-width: 1200px){

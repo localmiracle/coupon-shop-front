@@ -12,14 +12,11 @@ import { setToken } from '@/redux/tokenSlice'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 
-interface orgPageProps{
-  token: string;
-}
-
-const organisations:NextPage<orgPageProps> = ({token}) => {
+const organisations:NextPage = () => {
   const dispatch = useDispatch()
   const router = useRouter()
   let status:string;
+
   useEffect(() => {
     const token = localStorage.getItem('token')
     if (token){
@@ -31,8 +28,8 @@ const organisations:NextPage<orgPageProps> = ({token}) => {
     if (status === 'unauthenticated'){
       router.push('/login')
     }
-  }, [])
-  const jwt = token;
+  }, []);
+
   return (
     <>
     <Head>
@@ -42,7 +39,7 @@ const organisations:NextPage<orgPageProps> = ({token}) => {
         <UserHeader />
         <UserMain> 
             <h2 className={styles.name}>Мои организации</h2>
-            <Organisations token={jwt} />
+            <Organisations/>
         </UserMain>
     </UserContainer>
     <Footer />

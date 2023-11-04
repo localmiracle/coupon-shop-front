@@ -1,7 +1,7 @@
 .main{
     padding: 0 100px;
     display: flex;
-    margin-bottom: 410px;
+    min-height:90vh;
     gap:150px;
 }
 
