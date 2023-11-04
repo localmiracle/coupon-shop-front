@@ -10,7 +10,7 @@ interface HomeMainProps{
 
 const HomeMain:FC<HomeMainProps> = ({productList}) => {
   return (
-    <main>
+    <main className={styles.container}>
         <div className={styles.ads}></div>
         <section className={styles.top}>
             
