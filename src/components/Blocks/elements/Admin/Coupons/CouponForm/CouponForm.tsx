@@ -54,7 +54,7 @@ const CouponForm:FC<CouponFormProps> =({ token, coupon, data, setIsEdit,setIsEdi
     const dataName = newName? newName : name;
     const dataDescription = newDescription? newDescription : description;
     const dataPrice = newPrice? parseInt(newPrice,10) : parseInt(price,10);
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/coupon/${coupon}`,
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}:${process.env.NEXT_PUBLIC_API_PORT_ADMIN}/admin/coupon/${coupon}`,
     {
       method: "PUT",
       headers: {

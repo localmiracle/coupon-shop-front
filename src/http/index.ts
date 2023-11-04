@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const API_URL = `${process.env.NEXT_PUBLIC_API_URL}/admin`
+export const API_URL = `${process.env.NEXT_PUBLIC_API_URL}:${process.env.NEXT_PUBLIC_API_PORT_ADMIN}/admin`
 
 const $api = axios.create({
     withCredentials: true,

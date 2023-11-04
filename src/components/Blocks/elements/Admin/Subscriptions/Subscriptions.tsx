@@ -13,7 +13,7 @@ const Subscriptions:FC<SubProps> = ({token}) => {
     useEffect(() => {
        const getSubscriptions = async() => {
         
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/subscription`,
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}:${process.env.NEXT_PUBLIC_API_PORT_ADMIN}/admin/subscription`,
         {
             method: "GET",
             headers: {

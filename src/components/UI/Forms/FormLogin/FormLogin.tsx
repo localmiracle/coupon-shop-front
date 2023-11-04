@@ -121,13 +121,16 @@ const FormLogin = () => {
     if (sendable) {
       const resource = email ? email : phone;
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ resource: resource, channel: channel }),
-        });
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}:${process.env.NEXT_PUBLIC_API_PORT}/api/auth`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ resource: resource, channel: channel }),
+          }
+        );
         const data = await response.json();
         dispatch(setToken(data.token));
 
@@ -149,14 +152,17 @@ const FormLogin = () => {
     dispatch(setErrors(""));
     dispatch(setValues(["", "", "", ""]));
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/otp/send`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ phone: phone }),
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}:${process.env.NEXT_PUBLIC_API_PORT}/api/otp/send`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ phone: phone }),
+        }
+      );
       const data = await response.json();
       dispatch(setToken(data.token));
       if (response.status === 201) {
@@ -177,14 +183,17 @@ const FormLogin = () => {
 
   const authVerify = async () => {
     const code = values.join("");
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/otp/verify`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({ code: code }),
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}:${process.env.NEXT_PUBLIC_API_PORT}/api/otp/verify`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ code: code }),
+      }
+    );
     if (response.status === 400) {
       dispatch(setErrors("Неверный код"));
     }

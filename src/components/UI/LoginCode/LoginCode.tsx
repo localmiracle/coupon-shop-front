@@ -65,7 +65,7 @@ const LoginCode: FC<LoginCodeProps> = ({ errors }) => {
   };
   const authRequest = async () => {
     const code = values.join("");
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}:${process.env.NEXT_PUBLIC_API_PORT}/api/auth`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
