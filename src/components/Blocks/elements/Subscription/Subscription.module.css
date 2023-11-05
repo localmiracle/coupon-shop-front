@@ -1,0 +1,198 @@
+.subscription {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 14.5725rem;
+  flex-shrink: 0;
+  border-radius: 0.9375rem;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  padding: 0.62rem;
+}
+
+.subscription.level1 {
+  background: linear-gradient(
+    330deg,
+    rgba(226, 124, 30, 0.79) 1.77%,
+    #252422 98.08%
+  );
+}
+
+.subscription.level1 .subscription_controls svg :first-child {
+  fill: #f59d49;
+}
+
+.subscription.level1 .subscription_controls svg :last-child {
+  fill: #262522;
+}
+
+.subscription.level1 .subscription_header h2 {
+  background: linear-gradient(274deg, #f59d49 8.17%, #f6d9bc 99.45%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subscription.level1 .subscription_info {
+  background: #f59d49;
+}
+
+.subscription.level1 .price {
+  background: #916336;
+}
+
+.subscription.level1 button {
+  background: #56402a;
+}
+
+.subscription.level2 {
+  background: linear-gradient(330deg, rgba(190, 173, 157, 0.79) 1.77%, #252422 98.08%);
+}
+
+.subscription.level2 .subscription_controls svg :first-child {
+  fill: #CABBAD;
+}
+
+.subscription.level2 .subscription_controls svg :last-child {
+  fill: #262522;
+}
+
+.subscription.level2 .subscription_header h2 {
+  background: linear-gradient(274deg, #C9BBAC 8.17%, #F6EDE5 99.45%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subscription.level2 .subscription_info {
+  background: #CABBAD;
+}
+
+.subscription.level2 .price {
+  background: #81786F;
+}
+
+.subscription.level2 button {
+  background: #3B3835;
+}
+
+.subscription.level3 {
+  background: linear-gradient(330deg, #FFB800 1.77%, #252422 98.08%);
+}
+
+.subscription.level3 .subscription_controls svg :first-child {
+  fill: #EDAB03;
+}
+
+.subscription.level3 .subscription_controls svg :last-child {
+  fill: #262522;
+}
+
+.subscription.level3 .subscription_header h2 {
+  background: linear-gradient(273deg, #FBB500 9.02%, #F6EDE5 106.24%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subscription.level3 .subscription_info {
+  background: #EDAB03;
+}
+
+.subscription.level3 .price {
+  background: #946F10;
+}
+
+.subscription.level3 button {
+  background: #6D5516;
+}
+
+.subscription_header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+
+.subscription_controls {
+  display: flex;
+  align-items: center;
+  gap: 0.56rem;
+}
+
+.subscription_controls svg {
+  width: 1.1875rem;
+  height: 1.1875rem;
+  flex-shrink: 0;
+}
+
+.subscription_header h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.subscription_info_wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0.62rem;
+  overflow: hidden;
+}
+
+.subscription_info {
+  width: 12.5rem;
+  min-height: 9.6875rem;
+  flex-shrink: 0;
+  border-radius: 0.9375rem;
+}
+
+.subscription_info img {
+  width: 1rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+  padding: 0.75rem 0 0.69rem 0.81rem;
+}
+
+.description {
+  color: #fff;
+  font-family: Inter;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0 0.81rem;
+  margin-bottom: 0.25rem;
+}
+
+.sub_description {
+  color: #f3f3f3;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  padding: 0 0.81rem;
+}
+
+.price {
+  color: #fff;
+  font-family: Inter;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  flex-shrink: 0;
+  border-radius: 0.625rem;
+  text-align: center;
+  padding: 0.19rem 1.56rem 0.25rem 1.62rem;
+  margin: 1rem 0 0.94rem 0;
+}
+
+.subscription button {
+  width: 100%;
+  color: #fff;
+  font-family: Inter;
+  font-size: 1rem;
+  font-weight: 600;
+  flex-shrink: 0;
+  border-radius: 0.625rem;
+  padding: 0.62rem 0;
+  border-width: 0;
+}

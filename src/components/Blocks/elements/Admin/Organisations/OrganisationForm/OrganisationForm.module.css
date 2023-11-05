@@ -48,6 +48,10 @@
   .form_field input[type="text"] {
     width: 12rem;
   }
+
+  .form_field input[type="email"] {
+    width: 12rem;
+  }
   
   .form_field input[type="number"] {
     width: 4rem;
@@ -57,25 +61,6 @@
     color: #252422;
     font-size: 16px;
     font-weight: 600;
-  }
-  
-  .description {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 1rem;
-  }
-  
-  .description textarea {
-    color: #252422;
-    font-size: 16px;
-    font-weight: 400;
-    padding: 0.4rem 0.8rem;
-    border-image: none;
-    border-width: 0;
-    border-bottom: 1px solid #eee8dc;
-    width: 94%;
   }
   
   .error {

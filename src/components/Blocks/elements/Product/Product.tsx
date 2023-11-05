@@ -11,11 +11,12 @@ interface ProductProps{
     description: string;
     level: number;
     price: number;
+    style: any;
     handleEditProduct?:any, 
     handleDeleteProduct?:any,
 }
 
-const Product:FC<ProductProps> = ({id, image, name, description, level, price, handleEditProduct, handleDeleteProduct}) => {
+const Product:FC<ProductProps> = ({id, image, name, description, level, price, style, handleEditProduct, handleDeleteProduct}) => {
   const [isAdmin, setIsAdmin] = useState<boolean>(false)
   useEffect(()=>{
     if(localStorage.getItem('adminToken')){
@@ -25,7 +26,7 @@ const Product:FC<ProductProps> = ({id, image, name, description, level, price, h
     }
   },[])
   return (
-    <div className={styles.list__item}>
+    <div className={styles.list__item} style={style}>
         {isAdmin ?<div className={styles.edits}>
           <ClearIcon style={{color: 'red',cursor:'pointer'}} onClick={handleDeleteProduct}/>
           <EditNoteIcon style={{cursor:'pointer'}} onClick={handleEditProduct}/>

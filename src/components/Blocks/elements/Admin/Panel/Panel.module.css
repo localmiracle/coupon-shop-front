@@ -1,8 +1,98 @@
-.panel{
-    background-color: antiquewhite;
-    margin-top: 20px;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.panel_header {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0 1rem 0;
+  border-bottom: 1px solid #eee8dc;
+}
+
+.header_left {
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+}
+
+.header_left > h1 {
+  color: #252422;
+  font-family: Inter;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.panel_header > button {
+  color: #fffcf2;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  width: 7.5rem;
+  height: 45px;
+  flex-shrink: 0;
+  border-radius: 25px;
+  border: 1px solid #ccc5b9;
+  background: #403d39;
+}
+
+.panel_header > button:hover {
+  cursor: pointer;
+  background-color: #817d75;
+  border: 1px solid #403d39;
+}
+
+.auth_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75vh;
+}
+
+.panel_body {
+  display: flex;
+  width: 100%;
+}
+
+.field {
+  padding: 1.5rem 2.5rem;
+  border-bottom: 1px solid #eee8dc;
+}
+
+.field > a {
+  color: #252422;
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.field :hover {
+  text-decoration: underline;
+}
+
+.field_select :last-child {
+  border-bottom: none;
+}
+
+.field_display {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 2rem;
+}
+
+.field_display h2 {
+  color: #252422;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
 }

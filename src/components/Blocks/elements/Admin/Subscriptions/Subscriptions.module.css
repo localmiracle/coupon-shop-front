@@ -43,3 +43,11 @@
     font-weight: 400;
   }
   
+  .preview_wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 1rem 0;
+    border-top: 1px solid #eee8dc;
+    border-bottom: 1px solid #eee8dc;
+  }

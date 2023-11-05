@@ -1,137 +1,164 @@
-import React, { FC, useEffect, useState } from 'react'
-import styles from './Organisations.module.css'
+import React, { FC, useEffect, useState } from "react";
+import ProductList from "../../ProductList/ProductList";
+import styles from "./Organisations.module.css";
+import Modal from "@/components/UI/Modals/Modal";
+import OrganisationForm from "./OrganisationForm/OrganisationForm";
+import $adminApi from "@/http";
+import Image from "next/image";
 
-interface OrganisationsProps{
-    token: string | null
-}
+type Organisation = {
+  id: string;
+  name: string;
+  email_admin: string;
+  level_subscription: number;
+  orgn: string;
+  kpp: string;
+  inn: string;
+  address: string;
+  content_url: string;
+};
 
+const Organisations: FC = () => {
+  const [organisations, setOrganisations] = useState<Organisation[]>([]);
+  const [affirmationObject, setAffirmationObject] = useState<Organisation>();
+  const [editedObject, setEditedObject] = useState<Organisation>();
+  const [previewObject, setPreviewObject] = useState<Organisation>();
 
-const Organisations:FC<OrganisationsProps> = ({token}) => {
-    const [value, setValue] = useState<string>('')
-    const [name, setName] = useState<string>('')
-    const [email, setEmail] = useState<string>('')
-    const [level, setLevel] = useState<string>('')
-    const [success, setSuccess] = useState<string>('')
-    const [orgs, setOrgs] = useState<any>()
-    const [show, setShow] = useState<boolean>(false)
-    const [orgById, setOrgById] = useState<any>()
-    useEffect(() => {
-      const getOrgsList = async () =>{
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}:${process.env.NEXT_PUBLIC_API_PORT_ADMIN}/admin/organization`,{
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            },
-
-        })
-        const res = await response.json()
-        setOrgs(Array.from(res))
-        
-      }
-      getOrgsList()
-      
-    }, [])
-    
-
-    const handleChangeValue = (e:any)=>{
-        setValue(e.target.value)
+  const updateOrganisations = async () => {
+    try {
+      const { data } = await $adminApi.get("organization");
+      setOrganisations(data);
+    } catch (error) {
+      console.log(error);
     }
-    const handleChangeName = (e:any)=>{
-        setName(e.target.value)
-    }
-    const handleChangeEmail = (e:any)=>{
-        setEmail(e.target.value)
-    }
-    const handleChangeLevel = (e:any)=>{
-        setLevel(e.target.value)
-    }
+  };
 
-    const createOrganization = async(e:any) =>{
-        e.preventDefault()
-        const dataLevel = parseInt(level,10)
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}:${process.env.NEXT_PUBLIC_API_PORT_ADMIN}/admin/organization`,
-        {
-            method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-                'Authorization': `Bearer ${token}`
-              },
-              body: JSON.stringify({
-                name: name,
-                email_admin: email,
-                levelSubscription: dataLevel,
-               }),
-        })
-        const res = await response.json()
-        setSuccess('Организация успешно создана!')
-        setTimeout(() => {
-            setEmail('')
-            setLevel('')
-            setName('')
-            setSuccess('')
-        }, 4000);
-        
+  const deleteOrganisation = async (id: any) => {
+    try {
+      const { status } = await $adminApi.delete(`organization/${id}`);
+      return status;
+    } catch (error) {
+      console.log(error);
     }
+  };
 
-    const showList = ()=>{
-        setShow(!show)
-    }
+  useEffect(() => {
+    updateOrganisations();
+  }, []);
 
-    const getOrganisationById = async() =>{
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}:${process.env.NEXT_PUBLIC_API_PORT_ADMIN}/admin/organization/${value}`,
-            {
-                method: "GET",
-                  headers: {
-                    "Content-Type": "application/json",
-                    'Authorization': `Bearer ${token}`
-                  },
-            })
-        const res = await response.json()
-        setOrgById(res)
-        setValue('')
-    }
+  const toggleAffirmation = (organisation: Organisation) => {
+    if (affirmationObject?.id === organisation.id)
+      setAffirmationObject(undefined);
+    else setAffirmationObject(organisation);
+  };
+
+  const togglePreview = (organisation: Organisation) => {
+    if (previewObject?.id === organisation.id) setPreviewObject(undefined);
+    else setPreviewObject(organisation);
+  };
+
+  const handleEdit = (organisation: Organisation) => {
+    setEditedObject(organisation);
+    setAffirmationObject(undefined);
+  };
+
+  const handleStopEdit = () => {
+    setEditedObject(undefined);
+  };
+
+  const handleDelete = async (organisation: Organisation) => {
+    await deleteOrganisation(organisation.id);
+    updateOrganisations();
+  };
+
   return (
-    <div>
+    <>
+      <div className={styles.list}>
         <h2>Организации</h2>
-        <p>Создать организацию</p>
-        <form action="" className={styles.form}>
-            <p>Введите название организации</p>
-            <input type="text" value={name} onChange={handleChangeName}/>
-            <p>Введите электронную почту администратора</p>
-            <input type="email" value={email} onChange={handleChangeEmail}/>
-            <p>Введите уровень подписки</p>
-            <input type="text" value={level} onChange={handleChangeLevel}/>
-            {success ? <p style={{color: 'green'}}>{success}</p> : null}
-            <button type='button' onClick={createOrganization}>Создать организацию</button>
-        </form>
-        <h2>Список организаций</h2>
-        <button onClick={showList}>Посмотреть</button> 
-        {show? orgs.map((org:any)=>{
-            return(
-            <div key={org.id} className={styles.orgs}>
-                <h3>{org.name}</h3>
-                <h4>{org.id}</h4>
-            </div>)
-        }) : <p>Организации не найдены</p>}
+        <div className={styles.rows}>
+          {organisations.map((organisation) => (
+            <div key={organisation.id}>
+              <div className={styles.row}>
+                <p>{organisation.name}</p>
+                <div className={styles.modify_panel}>
+                  <p
+                    className={styles.cancel}
+                    onClick={() => togglePreview(organisation)}
+                  >
+                    Подробнее{" "}
+                    {previewObject?.id === organisation.id ? "↑" : "↓"}
+                  </p>
+                  <p>|</p>
+                  {editedObject?.id === organisation.id ? (
+                    <p className={styles.cancel} onClick={handleStopEdit}>
+                      Отмена
+                    </p>
+                  ) : (
+                    <>
+                      <>
+                        <p
+                          className={styles.modify}
+                          onClick={() => handleEdit(organisation)}
+                        >
+                          Редактировать
+                        </p>
+                        <p>|</p>
+                      </>
 
-        <p>Найти организацию</p>
-        <input style={{padding: '10px', borderRadius: '10px'}} 
-        type="text" value={value} onChange={handleChangeValue} 
-        placeholder='Введите Id организации'/>
-        <button onClick={getOrganisationById}>Найти</button>
-        {
-            orgById? 
-            <form action="">
-                <h2>{orgById.name}</h2>
-                <p>Изменить название</p>
-                <input type="text" name="" id="" />
-                <h3></h3>
-            </form>
-            : null
-        }
-    </div>
-  )
-}
+                      <p>
+                        {affirmationObject?.id === organisation.id ? (
+                          <>
+                            <span
+                              className={styles.delete}
+                              onClick={() => handleDelete(organisation)}
+                            >
+                              Удалить
+                            </span>
+                            <span> / </span>
+                            <span
+                              className={styles.cancel}
+                              onClick={() => toggleAffirmation(organisation)}
+                            >
+                              Отмена
+                            </span>
+                          </>
+                        ) : (
+                          <span
+                            className={styles.delete}
+                            onClick={() => toggleAffirmation(organisation)}
+                          >
+                            Удалить
+                          </span>
+                        )}
+                      </p>
+                    </>
+                  )}
+                </div>
+              </div>
+              {previewObject?.id === organisation.id && (
+                <div className={styles.detail}>
+                  <div className={styles.detail_fields}>
+                    <p><span>Номер:</span> {organisation.orgn}</p>
+                    <p><span>ИНН:</span> {organisation.inn}</p>
+                    <p><span>КПП:</span> {organisation.kpp}</p>
+                    <p><span>Адрес:</span> {organisation.address}</p>
+                    <p><span>Email администратора:</span> {organisation.email_admin}</p>
+                    <p><span>Уровень подписки:</span> {organisation.level_subscription}</p>
+                  </div>
+                  <Image src={organisation.content_url} alt={''} width={112} height={112}/>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+      <OrganisationForm
+        updateObjectCallback={updateOrganisations}
+        editedObject={editedObject}
+        handleFinishedEdit={handleStopEdit}
+      />
+    </>
+  );
+};
 
-export default Organisations
+export default Organisations;
