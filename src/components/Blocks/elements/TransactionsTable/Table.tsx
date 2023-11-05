@@ -25,7 +25,6 @@ const Table:FC = () => {
           <th className={styles.th}>ID</th>
           <th className={styles.th}>Время</th>
           <th className={styles.th}>Сумма</th>
-          <th className={styles.th}>Код Транзакции</th>
           <th className={styles.th}>Статус</th>
         </tr>
       </thead>
@@ -35,7 +34,6 @@ const Table:FC = () => {
             <td className={styles.td}>{transaction.id}</td>
             <td className={styles.td}>{transaction.createdAt}</td>
             <td className={styles.td}>{transaction.value.toFixed(1)}</td>
-            <td className={styles.td}>{transaction.value.trxNumber}</td>
             { transaction.status === true? 
             <td className={styles.td }><p className={styles.success}>Успешно</p></td> : 
             <td className={styles.td}><p className={styles.error}>Не успешно</p></td>
