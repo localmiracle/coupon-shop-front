@@ -7,7 +7,11 @@ interface AdminContainerProps {
 }
 
 const AdminContainer: FC<AdminContainerProps> = ({ children }) => {
-  return <div className={styles.container}>{children}</div>;
+  return (
+    <div className={styles.bg_wrapper}>
+      <div className={styles.container}>{children}</div>
+    </div>
+  );
 };
 
 export default AdminContainer;
