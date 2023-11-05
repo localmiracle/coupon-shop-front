@@ -72,8 +72,6 @@ const CouponForm: FC<CouponFormProps> = ({
         formData.append("description", description);
       if (editedObject.price !== price)
         formData.append("price", price.toString());
-      if (editedObject.level !== level)
-        formData.append("level", level.toString());
       if (editedObject.discount !== discount)
         formData.append("discount", discount.toString());
       if (editedObject.region !== region) formData.append("region", region);
@@ -152,6 +150,7 @@ const CouponForm: FC<CouponFormProps> = ({
           value={level}
           required
           onChange={(e) => setLevel(parseInt(e.target.value))}
+          disabled={editedObject ? true : false}
         />
       </div>
       <div className={styles.form_field}>

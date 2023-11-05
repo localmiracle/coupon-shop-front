@@ -67,8 +67,6 @@ const OrganisationForm: FC<OrganisationFormProps> = ({
       if (editedObject.name !== name) formData.append("name", name);
       if (editedObject.email_admin !== email)
         formData.append("email_admin", email);
-      if (editedObject.level !== level)
-        formData.append("level_subscription", level.toString());
       if (editedObject.orgn !== orgNumber) formData.append("orgn", orgNumber);
       if (editedObject.kpp !== kpp) formData.append("kpp", kpp);
       if (editedObject.inn !== inn) formData.append("inn", inn);
@@ -148,6 +146,7 @@ const OrganisationForm: FC<OrganisationFormProps> = ({
           value={level}
           required
           onChange={(e) => setLevel(parseInt(e.target.value))}
+          disabled={editedObject ? true : false}
         />
       </div>
       <div className={styles.form_field}>

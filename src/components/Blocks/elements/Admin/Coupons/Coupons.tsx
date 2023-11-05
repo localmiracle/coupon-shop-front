@@ -86,8 +86,7 @@ const Coupons: FC = () => {
                     className={styles.cancel}
                     onClick={() => togglePreview(coupon)}
                   >
-                    Превью{" "}
-                    {previewObject?.id === coupon.id ? "↑" : "↓"}
+                    Превью {previewObject?.id === coupon.id ? "↑" : "↓"}
                   </p>
                   <p>|</p>
                   {editedObject?.id === coupon.id ? (
@@ -96,17 +95,16 @@ const Coupons: FC = () => {
                     </p>
                   ) : (
                     <>
-                      
-                        <>
-                          <p
-                            className={styles.modify}
-                            onClick={() => handleEdit(coupon)}
-                          >
-                            Редактировать
-                          </p>
-                          <p>|</p>
-                        </>
-                      
+                      <>
+                        <p
+                          className={styles.modify}
+                          onClick={() => handleEdit(coupon)}
+                        >
+                          Редактировать
+                        </p>
+                        <p>|</p>
+                      </>
+
                       <p>
                         {affirmationObject?.id === coupon.id ? (
                           <>
@@ -117,30 +115,39 @@ const Coupons: FC = () => {
                               Удалить
                             </span>
                             <span> / </span>
-                            <span className={styles.cancel} onClick={() => toggleAffirmation(coupon)}>Отмена</span>
+                            <span
+                              className={styles.cancel}
+                              onClick={() => toggleAffirmation(coupon)}
+                            >
+                              Отмена
+                            </span>
                           </>
                         ) : (
-                          <span className={styles.delete} onClick={() => toggleAffirmation(coupon)}>Удалить</span>
+                          <span
+                            className={styles.delete}
+                            onClick={() => toggleAffirmation(coupon)}
+                          >
+                            Удалить
+                          </span>
                         )}
                       </p>
                     </>
                   )}
                 </div>
               </div>
-              <Product
-                style={
-                  previewObject?.id === coupon.id
-                    ? { display: "flex" }
-                    : { display: "none" }
-                }
-                key={coupon.name}
-                id={coupon.id}
-                image={coupon.content_url}
-                name={coupon.name}
-                description={coupon.description}
-                level={coupon.level}
-                price={coupon.price}
-              />
+              {previewObject?.id === coupon.id && (
+                <div className={styles.preview_wrapper}>
+                  <Product
+                    key={coupon.name}
+                    id={coupon.id}
+                    image={coupon.content_url}
+                    name={coupon.name}
+                    description={coupon.description}
+                    level={coupon.level}
+                    price={coupon.price}
+                  />
+                </div>
+              )}
             </div>
           ))}
         </div>
