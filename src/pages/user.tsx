@@ -9,6 +9,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { setToken } from "@/redux/tokenSlice";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import { GET_SELF } from "@/utils/graphql/query/queries";
+import { useLazyQuery } from "@apollo/client";
 
 interface userPageProps {
   token: string;
@@ -18,29 +20,58 @@ const user: NextPage<userPageProps> = () => {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  let status: string;
+  let token;
 
-  const [isSpecial, setIsSpecial] = useState<boolean>(false);
+  const [getSelf, { loading, error, data }] = useLazyQuery(GET_SELF);
+
+  const [email, setEmail] = useState<string>("");
+  const [phone, setPhone] = useState<string>("");
+  const [isAuth, setIsAuth] = useState<boolean>(false);
+
+  function getTokenExpiration(token: any) {
+    try {
+      const jwt = require("jsonwebtoken");
+      const decodedToken = jwt.decode(token);
+      const expirationTime = decodedToken ? decodedToken.exp : null;
+      return expirationTime;
+    } catch (error) {
+      console.error("Ошибка при получении времени жизни токена.");
+      return null;
+    }
+  }
+
+  const tokenIsValid = (token: string) => {
+    return token !== "" && Date.now() < getTokenExpiration(token) * 1000;
+  };
+
   useEffect(() => {
-    const isCode = localStorage.getItem("special");
-    if (isCode) {
-      setIsSpecial(true);
-    } else {
-      setIsSpecial(false);
-    }
-    const token = localStorage.getItem("token");
-    if (token) {
+    token = localStorage.getItem("token");
+    if (token && tokenIsValid(token)) {
       dispatch(setToken(token));
-      status = "authenticated";
+      getSelf({
+        context: {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      });
+      setIsAuth(true);
     } else {
-      status = "unauthenticated";
-    }
-    if (status === "unauthenticated") {
+      setIsAuth(false);
       router.push("/login");
     }
   }, []);
-  
-  return (
+
+  useEffect(() => {
+    if (!loading) {
+      if (data?.me) {
+        setEmail(data.me.email);
+        setPhone(data.me.phone);
+      }
+    }
+  }, [loading]);
+
+  return isAuth ? (
     <>
       <Head>
         <title>Parcus | Пользователь</title>
@@ -54,23 +85,12 @@ const user: NextPage<userPageProps> = () => {
             <form action="" className={styles.info}>
               <div className={styles.info__item}>
                 <p>Ваш номер телефона</p>
-                <input type="tel" disabled />
+                <input type="tel" value={phone} disabled />
               </div>
               <div className={styles.info__item}>
                 <p>Ваша электронная почта</p>
-                <input type="email" disabled />
+                <input type="email" value={email} disabled />
               </div>
-              {/* <div className={styles.info__item}>
-                <p>Ваш регион</p>
-                <select
-                  className={styles.locations}
-                  value="Москва"
-                  name="Москва"
-                  id=""
-                >
-                  <option value="Москва">Москва</option>
-                </select>
-              </div> */}
               <button type="button" className={styles.save}>
                 Сохранить изменения
               </button>
@@ -80,6 +100,8 @@ const user: NextPage<userPageProps> = () => {
       </UserContainer>
       <Footer />
     </>
+  ) : (
+    <p>Forbidden</p>
   );
 };
 

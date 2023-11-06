@@ -16,8 +16,8 @@ export const GET_TRANSACTION = gql`
 `;
 
 export const GET_ORGANISATION_USERS = gql`
-  query getOrganizationUsers{
-    getOrganizationUsers{
+  query getOrganizationUsers {
+    getOrganizationUsers {
       id
       email
       phone
@@ -26,38 +26,50 @@ export const GET_ORGANISATION_USERS = gql`
       createdAt
       updatedAt
     }
-  }`
+  }
+`;
 
 export const GET_COUPONS = gql`
-  query GetCoupons{
-    coupon{
+  query GetCoupons {
+    coupon {
       name
       description
       price
       image
-      level of subscription
+      level
+      of
+      subscription
     }
   }
-`
+`;
 
- export const GET_SUBSCRIPTIONS = gql`
-  query GetSubscriptions{
-    subscription{
+export const GET_SUBSCRIPTIONS = gql`
+  query GetSubscriptions {
+    subscription {
       name
       description
       price
       level
     }
   }
- `
+`;
 
- export const GET_ORGANIZATION = gql`
-  query GetOrganization{
-    organization{
+export const GET_ORGANIZATION = gql`
+  query GetOrganization {
+    organization {
       name
       email
       level
     }
   }
- `
+`;
 
+export const GET_SELF = gql`
+  query {
+    me {
+      id
+      email
+      phone
+    }
+  }
+`;
