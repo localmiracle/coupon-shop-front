@@ -21,9 +21,10 @@ const UsersTable:FC<UsersTableProps> = ({token}) => {
       <table className={styles.table}>
       <thead >
         <tr>
-          <th className={styles.th} >ID</th>
+          <th className={styles.th}>ID</th>
           <th className={styles.th}>Номер</th>
           <th className={styles.th}>Почта</th>
+          <th className={styles.th}>ID Организации</th>
           <th className={styles.th}>Роль</th>
         </tr>
       </thead>
@@ -33,6 +34,7 @@ const UsersTable:FC<UsersTableProps> = ({token}) => {
             <td className={styles.td}>{user.id}</td>
             <td className={styles.td}>{user.phone}</td>
             <td className={styles.td}>{user.email}</td>
+            <td className={styles.td}>{user.organizationId}</td>
             <td className={styles.td}>{user.roles}</td>
           </tr>
         ))
