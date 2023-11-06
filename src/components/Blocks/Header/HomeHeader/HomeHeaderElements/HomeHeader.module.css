@@ -1,38 +1,42 @@
-.header__container {
+.header {
+  background-color: #fffcf2;
+  width: 100%;
+  flex-shrink: 0;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.62rem;
+}
+
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header_container {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  margin-bottom: 26px;
-  padding: 33px 100px 20px 100px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  align-items: flex-start;
+  padding: 2.5rem 0 1.13rem 0;
 }
 
-@media (max-width: 1200px) {
-  .header__container {
-    flex-direction: column;
-    gap: 10px;
-    padding-right: 10px;
-    padding-left: 10px;
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
   }
-  .header__container div:nth-child(1) {
-    margin-top: -30px;
-    order: 2;
-  }
-  .header__container div:nth-child(2) {
-    order: 3;
-  }
-  .header__container div:nth-child(3) {
-    order: 1;
-    align-self: end;
-  }
-
-  /* изменения для шапки здесь */
 }
-
-@media (min-width: 2000px) {
-  .header__container {
-    justify-content: center;
-    gap: 100px;
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
   }
 }
 
@@ -64,17 +68,11 @@
   visibility: hidden;
   position: fixed;
   width: 100%;
-  top: 105px;
+  top: 111px;
   left: 0;
   z-index: 999;
   background: rgba(0, 0, 0, 0.5);
   max-height: 1346px;
-}
-
-@media (max-width: 1200px) {
-  .catalog {
-    top: 195px;
-  }
 }
 
 .show {
@@ -85,20 +83,27 @@
   background-color: rgba(255, 252, 242, 1);
   display: flex;
   flex-direction: column;
+  width: 24.125rem;
   padding-right: 17px;
-  padding-left: 100px;
+  padding-left: 5.94rem;
   height: 90vh;
   max-height: 1240px;
 }
 
-@media (max-width: 1200px) {
+@media (min-width: 1440px) {
   .catalog__container {
-    padding-left: 28px;
+    padding-left: 4.2rem;
+  }
+}
+
+@media (min-width: 1920px) {
+  .catalog__container {
+    padding-left: 19.5rem;
   }
 }
 
 .catalog_items {
-  width: 386px;
+  width: 296px;
   display: flex;
   justify-content: space-between;
   padding: 10px 10px 10px;
@@ -125,7 +130,6 @@
 }
 
 .catalog_category {
-  display: none;
   background-color: #fffcf2;
   width: 100%;
   min-height: 100%;
@@ -148,97 +152,4 @@
   width: fit-content;
   gap: 1.63rem 2.25rem;
   flex-wrap: wrap;
-}
-
-.card {
-  display: inline-flex;
-  padding: 10px;
-  gap: 10px;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  border-radius: 10px;
-  background: #fffcf2;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2);
-}
-
-.card_image {
-  padding: 107px 78px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10px;
-  background: #bfb6a7;
-  width: fit-content;
-  color: #fffcf2;
-  font-family: Inter;
-  font-size: 1rem;
-  font-weight: 700;
-}
-
-.card_image > p {
-  font-family: Inter;
-  font-size: 16px;
-}
-
-.card_info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  max-width: 13.125rem;
-  gap: 1.625rem;
-}
-
-.card_info h2 {
-  color: #000;
-  font-family: Inter;
-  font-size: 1.1875rem;
-  font-weight: 700;
-  padding-bottom: 0.44rem;
-}
-
-.description {
-  color: #5a534b;
-  font-family: Inter;
-  font-size: 0.8125rem;
-  font-weight: 700;
-  max-width: 11.5625rem;
-}
-
-.level {
-  color: #989898;
-  font-family: Inter;
-  font-size: 0.875rem;
-  font-weight: 700;
-  padding-bottom: 0.5rem;
-}
-
-.price {
-  width: fit-content;
-  padding: 0.6875rem 4.875rem;
-  border-radius: 0.625rem;
-  background: #e8e8e8;
-  margin-bottom: 0.44rem;
-}
-
-.price > span {
-  color: #252422;
-  font-family: Inter;
-  font-size: 1.125rem;
-  font-weight: 600;
-}
-
-.card_info button {
-  display: flex;
-  padding: 0.75rem 4.4375rem;
-  justify-content: center;
-  align-items: center;
-  gap: 0.625rem;
-  border: none;
-  border-radius: 0.625rem;
-  background: #eb5e28;
-  color: #fff;
-  font-family: Inter;
-  font-size: 1rem;
-  font-weight: 700;
 }
