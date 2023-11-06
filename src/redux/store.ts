@@ -8,8 +8,10 @@ import updateInfo, { UpdateState } from './updateInfo';
 import activePageSlice, { ActivePageState } from './activePageSlice';
 import valueSlice, { ValuesState } from './valueSlice';
 import activeSlice, { ActiveState } from './activeSlice';
+import regionSlice, { RegionState } from './regionSlice';
 
 export interface RootState {
+  region: RegionState;
   phone: PhoneState;
   token: TokenState;
   modal: ModalState;
@@ -29,7 +31,8 @@ const store = configureStore({
     updateInfo: updateInfo,
     activePage: activePageSlice,
     values: valueSlice, 
-    active: activeSlice
+    active: activeSlice,
+    region: regionSlice,
 
     // Другие редюсеры могут быть добавлены здесь
   },

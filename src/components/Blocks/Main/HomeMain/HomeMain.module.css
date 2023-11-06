@@ -1,6 +1,7 @@
 .top {
   display: flex;
   justify-content: space-between;
+  width: 100%;
   margin-bottom: 17px;
 }
 
@@ -9,8 +10,12 @@
   justify-content: space-between;
 }
 
+.bottom img {
+  user-select: none;
+}
+
 .bottom__left {
-    margin-top: 43px;
+  margin-top: 43px;
 }
 
 .ads {
@@ -22,8 +27,12 @@
   margin-bottom: 31px;
 }
 
-.left > h1 {
-  width: 553px;
+.left {
+  width: fit-content;
+}
+
+.left h1 {
+  max-width: 34.563rem;
   color: #000;
   font-family: Inter;
   font-size: 36px;
@@ -33,41 +42,14 @@
   margin-bottom: 60px;
 }
 
-.container {
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.container h3 {
+.main h3 {
+  max-width: 34.563rem;
   color: #252422;
   font-family: Inter;
   font-size: 30px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  margin-bottom: 14px;
-}
-
-@media (min-width: 640px) {
-  .container {
-    max-width: 640px;
-  }
-}
-@media (min-width: 768px) {
-  .container {
-    max-width: 768px;
-  }
-}
-@media (min-width: 1024px) {
-  .container {
-    max-width: 1024px;
-  }
-}
-@media (min-width: 1280px) {
-  .container {
-    max-width: 1280px;
-  }
 }
 
 .right {

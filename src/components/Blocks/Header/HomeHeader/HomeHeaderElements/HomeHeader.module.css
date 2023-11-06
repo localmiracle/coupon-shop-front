@@ -75,7 +75,7 @@
   width: 100%;
   top: 111px;
   left: 0;
-  z-index: 999;
+  z-index: 99;
   background: rgba(0, 0, 0, 0.5);
   max-height: 1346px;
 }
@@ -88,7 +88,6 @@
   background-color: rgba(255, 252, 242, 1);
   display: flex;
   flex-direction: column;
-  width: 24.125rem;
   padding-right: 17px;
   padding-left: 5.94rem;
   height: 90vh;
@@ -108,7 +107,7 @@
 }
 
 .catalog_items {
-  width: 296px;
+  width: 275px;
   display: flex;
   justify-content: space-between;
   padding: 10px 10px 10px;

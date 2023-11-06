@@ -22,14 +22,14 @@ import Cancel from "./../../../../../../public/icons/Cancel.png";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { Dictionary } from "@reduxjs/toolkit";
 import Product from "@/components/Blocks/elements/Product/Product";
+import apiClient from "@/http/client";
 
 interface CategoryProps {
   category: string;
+  products: any[];
 }
 
-const Category: FC<CategoryProps> = ({ category }) => {
-  const products = [{}, {}, {}, {}];
-
+const Category: FC<CategoryProps> = ({ category, products }) => {
   return (
     <div
       className={styles.catalog_category}
@@ -37,15 +37,13 @@ const Category: FC<CategoryProps> = ({ category }) => {
     >
       <h1>{category}</h1>
       <div className={styles.card_list}>
-        {products.map((product: any, index: number) => (
-          <Product
-            key={index}
-            name="Meta Quest Gift Cards"
-            description="Redeemable on 350+ games and apps"
-            level={2}
-            price={1000}
-          />
-        ))}
+        {products.length > 0 ? (
+          products.map((product: any, index: number) => (
+            <Product key={index} product={product} />
+          ))
+        ) : (
+          <p>Товаров нет</p>
+        )}
       </div>
     </div>
   );
@@ -54,8 +52,43 @@ const Category: FC<CategoryProps> = ({ category }) => {
 const HomeHeader: FC = () => {
   const [show, setShow] = useState<boolean>(false);
   const dispatch = useDispatch();
+  const region = useSelector((state: RootState) => state.region.name);
   const modalOpen = useSelector((state: RootState) => state.modal.modalOpen);
+  const [categories, setCategories] = useState<any[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("");
+  const [products, setProducts] = useState<any[]>([]);
+
+  useEffect(() => {
+    const getCategories = async () => {
+      try {
+        const { data } = await apiClient.get("/categories");
+        setCategories(data);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    getCategories();
+  }, []);
+
+  useEffect(() => {
+    const getCoupons = async () => {
+      try {
+        const { data } = await apiClient.get(
+          `/coupons/standard?region=${region}&category=${selectedCategory}`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Subcategory: "false",
+            },
+          }
+        );
+        setProducts(data);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    if (region !== "" && selectedCategory !== "") getCoupons();
+  }, [region, selectedCategory]);
 
   const handleToggleModal = () => {
     dispatch(setModalOpen(!modalOpen));
@@ -103,18 +136,26 @@ const HomeHeader: FC = () => {
               onMouseLeave={() => setSelectedCategory("")}
             >
               <div className={styles.catalog__container}>
-                <div
-                  className={styles.catalog_items}
-                  onMouseOver={() => setSelectedCategory("Здоровье")}
-                >
-                  <div>
-                    <Image src={Health} alt={""} />
-                    <p>Здоровье</p>
-                  </div>
+                {categories.length > 0 ? (
+                  categories.map((category) => (
+                    <div
+                      key={category.id}
+                      className={styles.catalog_items}
+                      onMouseOver={() => setSelectedCategory(category.name)}
+                    >
+                      <div>
+                        {/* <Image src={Health} alt={""} /> */}
+                        <p>{category.name}</p>
+                      </div>
 
-                  <ArrowForwardIosIcon />
-                </div>
-                <div
+                      <ArrowForwardIosIcon />
+                    </div>
+                  ))
+                ) : (
+                  <p>Нет доступных категорий</p>
+                )}
+
+                {/* <div
                   className={styles.catalog_items}
                   onMouseOver={() => setSelectedCategory("Красота")}
                 >
@@ -201,9 +242,9 @@ const HomeHeader: FC = () => {
                   </div>
 
                   <ArrowForwardIosIcon />
-                </div>
+                </div> */}
               </div>
-              <Category category={selectedCategory} />
+              <Category category={selectedCategory} products={products} />
             </div>
             <Search />
           </div>

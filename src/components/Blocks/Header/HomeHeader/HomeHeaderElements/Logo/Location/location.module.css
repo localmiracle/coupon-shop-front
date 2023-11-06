@@ -16,8 +16,9 @@
     position: absolute;
     display: block;
     left: 18px;
-    top: 55px;
+    top: 58px;
     line-height: 1.4;
+    z-index: 1000;
 }
 
 .location_select > p:hover {

@@ -5,26 +5,27 @@ import ClearIcon from "@mui/icons-material/Clear";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 
 interface ProductProps {
-  id: string | number;
-  image: string;
-  name: string;
-  description: string;
-  level: number;
-  price: number;
-  style?: any;
+  product: {
+    id: string;
+    image: File;
+    content_url: string;
+    name: string;
+    description: string;
+    level: number;
+    price: number;
+    discount: number;
+    region: string;
+    category: string;
+    subcategory: string | null;
+  };
+  style?: React.CSSProperties;
+  fullSize?: boolean;
 }
 
-const Product: FC<ProductProps> = ({
-  image,
-  name,
-  description,
-  level,
-  price,
-  style,
-}) => {
+const Product: FC<ProductProps> = ({ product, style, fullSize = true }) => {
   let levelString = "";
 
-  switch (level) {
+  switch (product.level) {
     case 1:
       levelString = "Минимум";
       break;
@@ -40,18 +41,18 @@ const Product: FC<ProductProps> = ({
   }
 
   return (
-    <div className={styles.card} style={style}>
+    <div className={`${styles.card} ${fullSize ? "" : styles.mini}`} style={style}>
       <div className={styles.card_image}>
         <p>IMAGE</p>
       </div>
       <div className={styles.card_info}>
         <div>
-          <h2>{name}</h2>
-          <p className={styles.description}>{description}</p>
+          <h2>{product.name}</h2>
+          <p className={styles.description}>{product.description}</p>
         </div>
         <p className={styles.level}>Уровень: {levelString}</p>
         <div className={styles.price}>
-          <span>{price} ₽</span>
+          <span>{product.price} ₽</span>
         </div>
         <button>КУПИТЬ</button>
       </div>
