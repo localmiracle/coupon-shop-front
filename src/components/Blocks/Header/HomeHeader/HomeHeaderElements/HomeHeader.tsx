@@ -69,7 +69,7 @@ const HomeHeader: FC = () => {
     <header>
       <div
         className={styles.header}
-        style={show ? { position: "fixed", zIndex: "999" } : {}}
+        style={show ? { position: "fixed", zIndex: "99999" } : {}}
       >
         <div className={`${styles.container} ${styles.header_container}`}>
           <div className={styles.header__logo}>
@@ -210,6 +210,10 @@ const HomeHeader: FC = () => {
           <Authorization handleToggleModal={handleToggleModal} />
         </div>
       </div>
+      <div
+        className={styles.header_replacer}
+        style={show ? { display: "block" } : { display: "none" }}
+      ></div>
     </header>
   );
 };

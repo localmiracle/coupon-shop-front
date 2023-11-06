@@ -6,6 +6,11 @@
   margin-bottom: 1.62rem;
 }
 
+.header_replacer {
+  width: 100%;
+  height: 8.563rem;
+}
+
 .container {
   width: 100%;
   margin-left: auto;
