@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import styles from "./CategoryForm.module.css";
-import $adminApi from "@/http";
+import $adminApi from "@/http/adminClient";
 
 interface CategoryFormProps {
   updateObjectCallback: () => void;

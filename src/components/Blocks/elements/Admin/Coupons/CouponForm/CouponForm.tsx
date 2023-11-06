@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import styles from "./CouponForm.module.css";
-import $adminApi from "@/http";
+import $adminApi from "@/http/adminClient";
 
 interface CouponFormProps {
   updateObjectCallback: () => void;

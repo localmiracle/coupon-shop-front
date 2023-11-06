@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import styles from "./RegionForm.module.css";
-import $adminApi from "@/http";
+import $adminApi from "@/http/adminClient";
 
 interface RegionFormProps {
   updateObjectCallback: () => void;

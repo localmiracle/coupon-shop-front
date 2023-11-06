@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import styles from "./OrganisationForm.module.css";
-import $adminApi from "@/http";
+import $adminApi from "@/http/adminClient";
 
 interface OrganisationFormProps {
   updateObjectCallback: () => void;

@@ -3,7 +3,7 @@ import ProductList from "../../ProductList/ProductList";
 import styles from "./Coupons.module.css";
 import Modal from "@/components/UI/Modals/Modal";
 import CouponForm from "./CouponForm/CouponForm";
-import $adminApi from "@/http";
+import $adminApi from "@/http/adminClient";
 import Product from "../../Product/Product";
 
 type Coupon = {
@@ -137,15 +137,7 @@ const Coupons: FC = () => {
               </div>
               {previewObject?.id === coupon.id && (
                 <div className={styles.preview_wrapper}>
-                  <Product
-                    key={coupon.name}
-                    id={coupon.id}
-                    image={coupon.content_url}
-                    name={coupon.name}
-                    description={coupon.description}
-                    level={coupon.level}
-                    price={coupon.price}
-                  />
+                  <Product product={coupon} />
                 </div>
               )}
             </div>

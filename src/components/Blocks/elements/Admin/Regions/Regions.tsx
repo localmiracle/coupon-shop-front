@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from "react";
 import styles from "./Regions.module.css";
-import $adminApi from "@/http";
+import $adminApi from "@/http/adminClient";
 import RegionForm from "./RegionForm/RegionForm";
 
 type Region = {

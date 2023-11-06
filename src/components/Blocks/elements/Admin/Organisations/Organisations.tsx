@@ -3,7 +3,7 @@ import ProductList from "../../ProductList/ProductList";
 import styles from "./Organisations.module.css";
 import Modal from "@/components/UI/Modals/Modal";
 import OrganisationForm from "./OrganisationForm/OrganisationForm";
-import $adminApi from "@/http";
+import $adminApi from "@/http/adminClient";
 import Image from "next/image";
 
 type Organisation = {

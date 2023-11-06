@@ -8,7 +8,7 @@ import React, { useEffect, useState } from "react";
 import Organisations from "@/components/Blocks/elements/Admin/Organisations/Organisations";
 import Head from "next/head";
 import axios from "axios";
-import $adminApi from "@/http";
+import $adminApi from "@/http/adminClient";
 
 const adminPage: NextPage = () => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);

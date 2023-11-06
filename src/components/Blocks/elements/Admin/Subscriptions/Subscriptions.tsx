@@ -3,7 +3,7 @@ import ProductList from "../../ProductList/ProductList";
 import styles from "./Subscriptions.module.css";
 import Modal from "@/components/UI/Modals/Modal";
 import SubscriptionForm from "./SubscriptionForm/SubscriptionForm";
-import $adminApi from "@/http";
+import $adminApi from "@/http/adminClient";
 import Subscription from "../../Subscription/Subscription";
 
 type Sub = {

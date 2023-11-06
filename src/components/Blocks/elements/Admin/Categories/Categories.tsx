@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from "react";
 import styles from "./Categories.module.css";
-import $adminApi from "@/http";
+import $adminApi from "@/http/adminClient";
 import CategoryForm from "./CategoryForm/CategoryForm";
 import Modal from "@/components/UI/Modals/Modal";
 
