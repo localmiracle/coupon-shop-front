@@ -15,6 +15,9 @@ apiClient.interceptors.request.use((config) => {
       config.headers.Authorization = `Bearer ${token}`;
       config.url = config.url.replace("/standard", "");
     }
+    if (config.url?.includes("subscriptions")) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
   } else {
     localStorage.removeItem("token");
     config.headers.Authorization = null;

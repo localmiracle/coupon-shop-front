@@ -132,13 +132,7 @@ const Subscriptions: FC = () => {
               </div>
               {previewObject?.id === subscription.id && (
                 <div className={styles.preview_wrapper}>
-                  <Subscription
-                    id={subscription.id}
-                    name={subscription.name}
-                    description={subscription.description}
-                    level={subscription.level}
-                    price={subscription.price}
-                  />
+                  <Subscription subscription={subscription} />
                 </div>
               )}
             </div>

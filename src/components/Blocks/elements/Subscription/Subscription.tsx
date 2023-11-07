@@ -6,23 +6,19 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 interface SubscriptionProps {
-  id: string;
-  name: string;
-  description: string;
-  level: number;
-  price: number;
+  subscription: {
+    id: string;
+    name: string;
+    description: string;
+    level: number;
+    price: number;
+  };
 }
 
-const Subscription: FC<SubscriptionProps> = ({
-  id,
-  name,
-  description,
-  level,
-  price,
-}) => {
+const Subscription: FC<SubscriptionProps> = ({ subscription }) => {
   let levelStyle = null;
 
-  switch (level) {
+  switch (subscription.level) {
     case 2:
       levelStyle = styles.level2;
       break;
@@ -38,7 +34,7 @@ const Subscription: FC<SubscriptionProps> = ({
   return (
     <div className={`${styles.subscription} ${levelStyle}`}>
       <div className={styles.subscription_header}>
-        <h2>{name}</h2>
+        <h2>{subscription.name}</h2>
         <div className={styles.subscription_controls}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -72,7 +68,7 @@ const Subscription: FC<SubscriptionProps> = ({
       <div className={styles.subscription_info_wrapper}>
         <div className={styles.subscription_info}>
           <Image src={Fire} alt={""} />
-          <p className={styles.description}>{description}</p>
+          <p className={styles.description}>{subscription.description}</p>
           <p className={styles.sub_description}>
             Вам станут доступны новые категории купонов с ещё большими скидками
             и выгодными условиями
@@ -80,14 +76,14 @@ const Subscription: FC<SubscriptionProps> = ({
         </div>
         <div className={styles.subscription_info}>
           <Image src={Fire} alt={""} />
-          <p className={styles.description}>{description}</p>
+          <p className={styles.description}>{subscription.description}</p>
           <p className={styles.sub_description}>
             Вам станут доступны новые категории купонов с ещё большими скидками
             и выгодными условиями
           </p>
         </div>
       </div>
-      <p className={styles.price}>{price} ₽ в месяц</p>
+      <p className={styles.price}>{subscription.price} ₽ в месяц</p>
       <button type="button">Купить</button>
     </div>
   );
