@@ -9,26 +9,11 @@ import Organisations from "@/components/Blocks/elements/Admin/Organisations/Orga
 import Head from "next/head";
 import axios from "axios";
 import $adminApi from "@/http/adminClient";
+import { tokenIsValid } from "@/http/utils";
 
 const adminPage: NextPage = () => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [token, setToken] = useState<string>("");
-
-  function getTokenExpiration(token: any) {
-    try {
-      const jwt = require("jsonwebtoken");
-      const decodedToken = jwt.decode(token);
-      const expirationTime = decodedToken ? decodedToken.exp : null;
-      return expirationTime;
-    } catch (error) {
-      console.error("Ошибка при получении времени жизни токена.");
-      return null;
-    }
-  }
-
-  const tokenIsValid = (token: string) => {
-    return token !== "" && Date.now() < getTokenExpiration(token) * 1000;
-  };
 
   useEffect(() => {
     const token = localStorage.getItem("adminToken");

@@ -1,33 +1,24 @@
 import React, { FC, useState } from "react";
 import styles from "./AdminForm.module.css";
 import Input from "../../Inputs/Input";
-const jwt = require("jsonwebtoken");
 
 interface AdminFormProps {
   setToken: (token: string) => void;
 }
 
 const AdminForm: FC<AdminFormProps> = ({ setToken }) => {
-  const [adminToken, setAdminToken] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [login, setLogin] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+
   const handleLogin = (e: any) => {
     setLogin(e.target.value);
   };
+
   const handlePassword = (e: any) => {
     setPassword(e.target.value);
   };
-  function getTokenExpiration(token: any) {
-    try {
-      const decodedToken = jwt.decode(token);
-      const expirationTime = decodedToken ? decodedToken.exp : null;
-      return expirationTime;
-    } catch (error) {
-      console.error("Ошибка при получении времени жизни токена:");
-      return null;
-    }
-  }
+
   const authAdmin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
@@ -52,6 +43,7 @@ const AdminForm: FC<AdminFormProps> = ({ setToken }) => {
       console.error(error);
     }
   };
+  
   return (
     <>
       <div className={styles.admin}>

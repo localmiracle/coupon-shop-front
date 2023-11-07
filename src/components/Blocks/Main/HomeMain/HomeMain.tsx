@@ -14,8 +14,6 @@ const HomeMain: FC<HomeMainProps> = ({
   productList,
   loadProductPageCallback,
 }) => {
-  console.log(productList);
-
   return (
     <main className={styles.main}>
       <div className={styles.ads}></div>
@@ -28,7 +26,9 @@ const HomeMain: FC<HomeMainProps> = ({
               productList={productList}
               preloadProducts={loadProductPageCallback}
             />
-          ) : <p className={styles.no_products}>Нет доступных товаров</p>}
+          ) : (
+            <p className={styles.no_products}>Нет доступных товаров</p>
+          )}
         </div>
 
         <div className={styles.right}></div>
@@ -41,7 +41,9 @@ const HomeMain: FC<HomeMainProps> = ({
               productList={productList}
               preloadProducts={loadProductPageCallback}
             />
-          ) : <p className={styles.no_products}>Нет доступных товаров</p>}
+          ) : (
+            <p className={styles.no_products}>Нет доступных товаров</p>
+          )}
         </div>
         <div className={styles.bottom__right}>
           <Image src={Man} alt={"ManIcon"}></Image>

@@ -11,6 +11,7 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import { GET_SELF } from "@/utils/graphql/query/queries";
 import { useLazyQuery } from "@apollo/client";
+import { tokenIsValid } from "@/http/utils";
 
 interface userPageProps {
   token: string;
@@ -22,39 +23,30 @@ const user: NextPage<userPageProps> = () => {
 
   let token;
 
-  const [getSelf, { loading, error, data }] = useLazyQuery(GET_SELF);
+  const [getSelf, { loading, error, data, refetch }] =
+    useLazyQuery(GET_SELF);
 
   const [email, setEmail] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
   const [isAuth, setIsAuth] = useState<boolean>(false);
 
-  function getTokenExpiration(token: any) {
-    try {
-      const jwt = require("jsonwebtoken");
-      const decodedToken = jwt.decode(token);
-      const expirationTime = decodedToken ? decodedToken.exp : null;
-      return expirationTime;
-    } catch (error) {
-      console.error("Ошибка при получении времени жизни токена.");
-      return null;
-    }
-  }
-
-  const tokenIsValid = (token: string) => {
-    return token !== "" && Date.now() < getTokenExpiration(token) * 1000;
-  };
-
   useEffect(() => {
     token = localStorage.getItem("token");
     if (token && tokenIsValid(token)) {
       dispatch(setToken(token));
-      getSelf({
+
+      const queryParams = {
+        notifyOnNetworkStatusChange: true,
         context: {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         },
-      });
+      };
+
+      getSelf(queryParams);
+      refetch();
+
       setIsAuth(true);
     } else {
       localStorage.removeItem("token");
@@ -65,6 +57,7 @@ const user: NextPage<userPageProps> = () => {
   }, []);
 
   useEffect(() => {
+    console.log(loading);
     if (!loading) {
       if (data?.me) {
         setEmail(data.me.email);
