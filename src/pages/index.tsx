@@ -19,7 +19,7 @@ const HomePage: NextPage = () => {
   const getCoupons = async (page: number) => {
     try {
       const { data } = await apiClient.get(
-        `/coupons/standard?region=${region}&limit=6&offset=${page - 1}`,
+        `/coupons/standard?region=${region}&limit=6&offset=${(page - 1) * 6}`,
         {
           headers: {
             "Content-Type": "application/json",

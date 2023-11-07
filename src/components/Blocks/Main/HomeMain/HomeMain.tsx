@@ -23,12 +23,12 @@ const HomeMain: FC<HomeMainProps> = ({
         <div className={styles.left}>
           <h1>ПРЕВРАТИТЕ СВОИ ПОКУПКИ В СБЕРЕЖЕНИЯ </h1>
           <h3>Выгодные предложения</h3>
-          {productList?.length > 0 && (
+          {productList?.length > 0 ? (
             <ProductList
               productList={productList}
               preloadProducts={loadProductPageCallback}
             />
-          )}
+          ) : <p className={styles.no_products}>Нет доступных товаров</p>}
         </div>
 
         <div className={styles.right}></div>
@@ -36,12 +36,12 @@ const HomeMain: FC<HomeMainProps> = ({
       <section className={styles.bottom}>
         <div className={styles.bottom__left}>
           <h3>Популярно в последнее время</h3>
-          {productList?.length > 0 && (
+          {productList?.length > 0 ? (
             <ProductList
               productList={productList}
               preloadProducts={loadProductPageCallback}
             />
-          )}
+          ) : <p className={styles.no_products}>Нет доступных товаров</p>}
         </div>
         <div className={styles.bottom__right}>
           <Image src={Man} alt={"ManIcon"}></Image>

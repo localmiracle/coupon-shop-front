@@ -205,7 +205,7 @@ const FormLogin = () => {
       dispatch(setSuccess("Успешный вход! Переадресация..."));
       setTimeout(() => {
         router.push("/");
-      }, 5000);
+      }, 1000);
     }
   };
 

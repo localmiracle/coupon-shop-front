@@ -60,3 +60,8 @@
   border: 1px solid #ccc5b9;
   background: #fffcf2;
 }
+
+.no_products {
+  padding-top: 0.5rem;
+  font-size: 14px;
+}

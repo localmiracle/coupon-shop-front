@@ -57,6 +57,8 @@ const user: NextPage<userPageProps> = () => {
       });
       setIsAuth(true);
     } else {
+      localStorage.removeItem("token");
+      dispatch(setToken(""));
       setIsAuth(false);
       router.push("/login");
     }

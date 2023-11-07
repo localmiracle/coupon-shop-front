@@ -50,7 +50,7 @@
 .card .card_info h2 {
   color: #000;
   font-family: Inter;
-  font-size: 1.1875rem;
+  font-size: 19px;
   font-weight: 700;
   padding-bottom: 0.44rem;
 }
@@ -63,7 +63,7 @@
 .card .description {
   color: #5a534b;
   font-family: Inter;
-  font-size: 0.8125rem;
+  font-size: 13px;
   font-weight: 700;
   max-width: 11.5625rem;
   padding-bottom: 1.62rem;
@@ -77,7 +77,7 @@
 .card .level {
   color: #989898;
   font-family: Inter;
-  font-size: 0.875rem;
+  font-size: 14px;
   font-weight: 700;
   padding-bottom: 0.5rem;
 }
@@ -102,12 +102,12 @@
 .card .price > span {
   color: #252422;
   font-family: Inter;
-  font-size: 1.125rem;
+  font-size: 18px;
   font-weight: 600;
 }
 
 .card.mini .price > span {
-  font-size: 0.875rem;
+  font-size: 14px;
 }
 
 .card .card_info button {
@@ -121,11 +121,11 @@
   background: #eb5e28;
   color: #fff;
   font-family: Inter;
-  font-size: 1rem;
+  font-size: 16px;
   font-weight: 700;
 }
 
 .card.mini .card_info button {
-  font-size: 0.875rem;
+  font-size: 14px;
   padding: 0.88rem 2.94rem;
 }
