@@ -8,10 +8,13 @@
 .bottom {
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 42px;
 }
 
 .bottom img {
   user-select: none;
+  padding-bottom:10px;
 }
 
 .bottom__left {
