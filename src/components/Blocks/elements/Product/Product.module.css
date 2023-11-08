@@ -18,33 +18,20 @@
 }
 
 .card .card_image {
-  padding: 6.69rem 4.88rem;
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  background: #bfb6a7;
-  width: fit-content;
-  color: #fffcf2;
-  font-size: 1rem;
-  font-weight: 700;
-}
-
-.card.mini .card_image {
-  padding: 4.75rem 2.75rem;
-}
-
-.card .card_image > p {
-  font-size: 16px;
-}
-
-.card.mini .card_image > p {
-  font-size: 14px;
 }
 
 .card .card_info {
   display: flex;
   flex-direction: column;
+  max-width: 13.125rem;
   width: fit-content;
+}
+
+.card.mini .card_info {
+  max-width: 10.125rem;
 }
 
 .card .card_info h2 {
@@ -65,7 +52,6 @@
   font-family: Inter;
   font-size: 13px;
   font-weight: 700;
-  max-width: 11.5625rem;
   padding-bottom: 1.62rem;
 }
 
@@ -84,6 +70,7 @@
 
 .card.mini .level {
   font-size: 10px;
+  padding-bottom: 0.2rem;
 }
 
 .card .price {
@@ -96,7 +83,9 @@
 }
 
 .card.mini .price {
-  padding: 0.6875rem 0rem;
+  padding: 0;
+  background: none;
+  text-align: left;
 }
 
 .card .price > span {
@@ -107,7 +96,7 @@
 }
 
 .card.mini .price > span {
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .card .card_info button {

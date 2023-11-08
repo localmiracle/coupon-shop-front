@@ -41,10 +41,17 @@ const Product: FC<ProductProps> = ({ product, style, fullSize = true }) => {
   }
 
   return (
-    <div className={`${styles.card} ${fullSize ? "" : styles.mini}`} style={style}>
-      <div className={styles.card_image}>
-        <p>IMAGE</p>
-      </div>
+    <div
+      className={`${styles.card} ${fullSize ? "" : styles.mini}`}
+      style={style}
+    >
+      <Image
+        src={product.content_url}
+        alt={""}
+        width={fullSize ? 209 : 137}
+        height={fullSize ? 232 : 171}
+        className={styles.card_image}
+      />
       <div className={styles.card_info}>
         <div>
           <h2>{product.name}</h2>

@@ -57,7 +57,6 @@ const user: NextPage<userPageProps> = () => {
   }, []);
 
   useEffect(() => {
-    console.log(loading);
     if (!loading) {
       if (data?.me) {
         setEmail(data.me.email);

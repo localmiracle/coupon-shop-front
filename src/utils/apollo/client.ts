@@ -6,7 +6,7 @@ let apolloClient: ApolloClient<any>;
 
 function createApolloClient() {
   return new ApolloClient({
-    uri: `${process.env.NEXT_PUBLIC_API_URL}:${process.env.NEXT_PUBLIC_API_PORT}/query`,
+    uri: `${process.env.NEXT_PUBLIC_API_URL}:3000/query`,
     cache: new InMemoryCache(),
     
   });
