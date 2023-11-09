@@ -14,7 +14,13 @@
 
 .bottom img {
   user-select: none;
-  padding-bottom:10px;
+  padding-bottom: 10px;
+}
+
+@media (max-width: 1280px) {
+  .bottom img {
+    display: none;
+  }
 }
 
 .bottom__left {
@@ -55,6 +61,15 @@
   line-height: normal;
 }
 
+@media (max-width: 640px) {
+  .left h1 {
+    font-size: 28px;
+  }
+  .main h3 {
+    font-size: 22px;
+  }
+}
+
 .right {
   width: 240px;
   height: 392px;
@@ -62,6 +77,12 @@
   border-radius: 10px;
   border: 1px solid #ccc5b9;
   background: #fffcf2;
+}
+
+@media (max-width: 1280px) {
+  .right {
+    display: none;
+  }
 }
 
 .no_products {

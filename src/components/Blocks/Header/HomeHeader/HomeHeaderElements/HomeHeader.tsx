@@ -33,7 +33,7 @@ const Category: FC<CategoryProps> = ({ category, products }) => {
   return (
     <div
       className={styles.catalog_category}
-      style={category === "" ? { display: "none" } : { display: "block" }}
+      style={category === "" ? { display: "none" } : { display: "flex" }}
     >
       <h1>{category}</h1>
       <div className={styles.card_list}>
@@ -96,11 +96,16 @@ const HomeHeader: FC = () => {
 
   const handleToggleCatalog = () => {
     setShow(!show);
+    if (show) {
+      document.body.style.overflow = "auto";
+    } else {
+      document.body.style.overflow = "hidden";
+    }
   };
 
   return (
-    <header>
-      <div
+    <>
+      <header
         className={styles.header}
         style={show ? { position: "fixed", zIndex: "99999" } : {}}
       >
@@ -109,6 +114,38 @@ const HomeHeader: FC = () => {
             <Logo />
             <Location />
           </div>
+
+          <div
+            className={`${styles.catalog} ${show ? styles.show : ""}`}
+            onMouseLeave={() => setSelectedCategory("")}
+          >
+            <div
+              className={`${styles.catalog__container} ${
+                selectedCategory !== "" ? styles.mobile_hidden : ""
+              }`}
+            >
+              {categories.length > 0 ? (
+                categories.map((category) => (
+                  <div
+                    key={category.id}
+                    className={styles.catalog_items}
+                    onMouseOver={() => setSelectedCategory(category.name)}
+                  >
+                    <div>
+                      {/* <Image src={Health} alt={""} /> */}
+                      <p>{category.name}</p>
+                    </div>
+
+                    <ArrowForwardIosIcon />
+                  </div>
+                ))
+              ) : (
+                <p>Нет доступных категорий</p>
+              )}
+            </div>
+            <Category category={selectedCategory} products={products} />
+          </div>
+
           <div className={styles.header__search}>
             {show ? (
               <Image
@@ -131,131 +168,41 @@ const HomeHeader: FC = () => {
               />
             )}
 
-            <div
-              className={`${styles.catalog} ${show ? styles.show : ""}`}
-              onMouseLeave={() => setSelectedCategory("")}
-            >
-              <div className={styles.catalog__container}>
-                {categories.length > 0 ? (
-                  categories.map((category) => (
-                    <div
-                      key={category.id}
-                      className={styles.catalog_items}
-                      onMouseOver={() => setSelectedCategory(category.name)}
-                    >
-                      <div>
-                        {/* <Image src={Health} alt={""} /> */}
-                        <p>{category.name}</p>
-                      </div>
-
-                      <ArrowForwardIosIcon />
-                    </div>
-                  ))
-                ) : (
-                  <p>Нет доступных категорий</p>
-                )}
-
-                {/* <div
-                  className={styles.catalog_items}
-                  onMouseOver={() => setSelectedCategory("Красота")}
-                >
-                  <div>
-                    <Image src={Beauty} alt={""} />
-                    <p>Красота</p>
-                  </div>
-
-                  <ArrowForwardIosIcon />
-                </div>
-                <div
-                  className={styles.catalog_items}
-                  onMouseOver={() => setSelectedCategory("Рестораны и кафе")}
-                >
-                  <div>
-                    <Image src={Restaurants} alt={""} />
-                    <p>Рестораны и кафе</p>
-                  </div>
-
-                  <ArrowForwardIosIcon />
-                </div>
-                <div
-                  className={styles.catalog_items}
-                  onMouseOver={() => setSelectedCategory("Активный отдых")}
-                >
-                  <div>
-                    <Image src={Weekends} alt={""} />
-                    <p>Активный отдых</p>
-                  </div>
-
-                  <ArrowForwardIosIcon />
-                </div>
-                <div
-                  className={styles.catalog_items}
-                  onMouseOver={() => setSelectedCategory("Фитнес")}
-                >
-                  <div>
-                    <Image src={Fitness} alt={""} />
-                    <p>Фитнес</p>
-                  </div>
-
-                  <ArrowForwardIosIcon />
-                </div>
-                <div
-                  className={styles.catalog_items}
-                  onMouseOver={() => setSelectedCategory("Развлечения")}
-                >
-                  <div>
-                    <Image src={Attractions} alt={""} />
-                    <p>Развлечения</p>
-                  </div>
-
-                  <ArrowForwardIosIcon />
-                </div>
-                <div
-                  className={styles.catalog_items}
-                  onMouseOver={() => setSelectedCategory("Всё для дома")}
-                >
-                  <div>
-                    <Image src={ForHome} alt={""} />
-                    <p>Всё для дома</p>
-                  </div>
-
-                  <ArrowForwardIosIcon />
-                </div>
-                <div
-                  className={styles.catalog_items}
-                  onMouseOver={() => setSelectedCategory("Дети")}
-                >
-                  <div>
-                    <Image src={Kids} alt={""} />
-                    <p>Дети</p>
-                  </div>
-
-                  <ArrowForwardIosIcon />
-                </div>
-                <div
-                  className={styles.catalog_items}
-                  onMouseOver={() => setSelectedCategory("Обучение")}
-                >
-                  <div>
-                    <Image src={Educations} alt={""} />
-                    <p>Обучение</p>
-                  </div>
-
-                  <ArrowForwardIosIcon />
-                </div> */}
-              </div>
-              <Category category={selectedCategory} products={products} />
-            </div>
             <Search />
           </div>
+
           <Authorization handleToggleModal={handleToggleModal} />
         </div>
-      </div>
+        <div className={styles.header__search__mobile}>
+          {show ? (
+            <Image
+              src={Cancel}
+              alt=""
+              onClick={handleToggleCatalog}
+              style={{ cursor: "pointer" }}
+            />
+          ) : (
+            <MenuIcon
+              onClick={handleToggleCatalog}
+              style={{
+                display: "block",
+                fontSize: "30px",
+                cursor: "pointer",
+                background: "#CCC5B9",
+                borderRadius: "5px",
+                position: "relative",
+              }}
+            />
+          )}
+
+          <Search />
+        </div>
+      </header>
       <div
         className={styles.header_replacer}
         style={show ? { display: "block" } : { display: "none" }}
       ></div>
-    </header>
+    </>
   );
 };
 

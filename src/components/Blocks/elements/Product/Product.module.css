@@ -18,8 +18,6 @@
 }
 
 .card .card_image {
-  justify-content: center;
-  align-items: center;
   border-radius: 10px;
 }
 
@@ -117,4 +115,54 @@
 .card.mini .card_info button {
   font-size: 14px;
   padding: 0.88rem 2.94rem;
+}
+
+@media (min-width: 320px) and (max-width: 460px) {
+  .card {
+    padding: 0.37rem 0.69rem 0.5rem 0.44rem !important;
+    gap: 0.69rem !important;
+  }
+
+  .card_info {
+    max-width: 10.125rem !important;
+  }
+
+  .card_image {
+    width: 137px !important;
+    height: 171px !important;
+  }
+
+  .card_info h2 {
+    font-size: 14px !important;
+    padding-bottom: 0.31rem !important;
+  }
+  
+  .description {
+    font-size: 10px !important;
+    padding-bottom: 0.5rem !important;
+  }
+
+  .level {
+    font-size: 10px !important;
+    padding-bottom: 0.2rem !important;
+  }
+
+  .price {
+    padding: 0 !important;
+    background: none !important;
+    text-align: left !important;
+  }
+
+  .price > span {
+    font-size: 12px !important;
+  }
+
+  .price > span {
+    font-size: 12px !important;
+  }
+
+  .card_info button {
+    font-size: 14px !important;
+    padding: 0.88rem 2.94rem !important;
+  }
 }

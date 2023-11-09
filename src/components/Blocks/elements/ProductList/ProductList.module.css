@@ -1,50 +1,75 @@
 .item_slider {
-    justify-content: space-between;
-    align-items: center;
-    display: flex;
-    position: relative;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  position: relative;
+  max-width: 61.5rem;
+}
+
+@media (min-width: 320px) {
+  .item_slider {
+    max-width: 285px;
+  }
+}
+@media (min-width: 476px) {
+  .item_slider {
+    max-width: 430px;
+  }
+}
+@media (min-width: 640px) {
+  .item_slider {
+    max-width: 640px;
+  }
+}
+@media (min-width: 768px) {
+  .item_slider {
+    max-width: 768px;
+  }
+}
+@media (min-width: 1024px) {
+  .item_slider {
     max-width: 61.5rem;
   }
-  
-  .item_slider .item_container {
-    display: inline-flex;
-    justify-content: flex-start;
-    overflow-x: scroll;
-    padding: 1.6rem 0.5rem 0.88rem 0.2rem;
-    gap: 0.81rem;
-  }
-  
-  .item_slider .item_container span {
-    margin: 0px 10px;
-  }
-  
-  .item_slider .item_container::-webkit-scrollbar {
-    display: none;
-  }
-  
-  .item_slider .left_arrow_left {
-    user-select: none;
-    position: absolute;
-    left: -1.5rem;
-    cursor: pointer;
-    z-index: 1;
-    width: 2.5rem;
-    height: 2.5rem;
-    flex-shrink: 0;
-  }
-  
-  .item_slider .right_arrow_right {
-    user-select: none;
-    position: absolute;
-    right: -1.5rem;
-    cursor: pointer;
-    z-index: 1;
-    width: 2.5rem;
-    height: 2.5rem;
-    flex-shrink: 0;
-  }
-  
-  .is_disabled_hide {
-    display: none;
-  }
-  
+}
+
+.item_slider .item_container {
+  display: inline-flex;
+  justify-content: flex-start;
+  overflow-x: scroll;
+  padding: 1.6rem 0.5rem 0.88rem 0.2rem;
+  gap: 0.81rem;
+}
+
+.item_slider .item_container span {
+  margin: 0px 10px;
+}
+
+.item_slider .item_container::-webkit-scrollbar {
+  display: none;
+}
+
+.item_slider .left_arrow_left {
+  user-select: none;
+  position: absolute;
+  left: -1.5rem;
+  cursor: pointer;
+  z-index: 1;
+  width: 2.5rem;
+  height: 2.5rem;
+  flex-shrink: 0;
+}
+
+.item_slider .right_arrow_right {
+  user-select: none;
+  position: absolute;
+  right: -1.5rem;
+  cursor: pointer;
+  z-index: 1;
+  width: 2.5rem;
+  height: 2.5rem;
+  flex-shrink: 0;
+}
+
+.is_disabled_hide {
+  display: none;
+}

@@ -1,21 +1,35 @@
-.inputs{
-    display: flex;
-    gap: 7px;
-    margin-top: 49px;
+.inputs {
+  display: flex;
+  gap: 7px;
+  margin-top: 49px;
 }
 
-.input{
-    padding: 25px 15px 25px 25px;
-    border-radius: 10px;
-    border: 1px solid #CCC5B9;
-    background: #FFFCF2;
-    color: #CCC5B9;
-    font-size: 36px;
-    font-weight: 500;
-    width: 32px;
-    height: 32px;
+.input {
+  padding: 25px 15px 25px 25px;
+  border-radius: 10px;
+  border: 1px solid #ccc5b9;
+  background: #fffcf2;
+  color: #ccc5b9;
+  font-size: 36px;
+  font-weight: 500;
+  width: 32px;
+  height: 32px;
 }
 
-.error{
-    border: 1px solid red;
+.error {
+  border: 1px solid red;
+}
+
+@media (min-width: 320px) and (max-width: 640px) {
+  .inputs {
+    margin-top: 1rem;
+    margin-bottom: 4rem;
+    gap: 4px;
+  }
+
+  .input {
+    padding: 6px 0 6px 6px;
+    font-size: 20px;
+    
+  }
 }

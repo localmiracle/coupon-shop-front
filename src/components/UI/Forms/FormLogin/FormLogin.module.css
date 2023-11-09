@@ -132,15 +132,15 @@
 }
 
 .form_btn {
-  width:500px;
+  width: 500px;
   height: 76px;
   font-size: 28px;
   cursor: pointer;
-  background-color: #403D39;
+  background-color: #403d39;
   color: #fff;
   outline: none;
   border-radius: 25px;
-  border: 1px solid #CCC5B9;
+  border: 1px solid #ccc5b9;
 }
 
 .otp {
@@ -249,7 +249,7 @@
   -webkit-appearance: none;
   appearance: none;
   background-color: transparent;
-  border: 2px solid #EB5E28;
+  border: 2px solid #eb5e28;
   border-radius: 4px;
   padding: 7px;
   display: inline-block;
@@ -261,7 +261,7 @@
 }
 
 .checkbox_group input:checked + label:before {
-  background-color: #EB5E28;
+  background-color: #eb5e28;
 }
 
 .checkbox_group input:checked + label:after {
@@ -272,12 +272,116 @@
   left: 6px;
   width: 5px;
   height: 12px;
-  border: solid #FFFCF2;
+  border: solid #fffcf2;
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
 }
 
 .error {
-  color:red;
-  margin-bottom: 4px;
+  color: red;
+margin-bottom: 4px;
+}
+
+@media (min-width: 320px) and (max-width: 640px) {
+  .formLogin {
+    max-width: 440px;
+    width: 99%;
+    height: 60%;
+  }
+
+  .title {
+    margin: 2rem 0 1rem 0;
+  }
+
+  .title > h2 {
+    font-size: 24px;
+  }
+
+  .choice {
+    max-width: 300px;
+    height: 55px;
+    font-size: 20px;
+  }
+
+  .verif {
+    max-width: 308px;
+    height: 65px;
+    margin-bottom: 1rem !important;
+  }
+
+  .verif_email {
+    max-width: 272px;
+    font-size: 20px;
+    padding: 18px;
+    margin-bottom: 1rem !important;
+  }
+
+  .verif > div {
+    font-size: 20px;
+  }
+
+  .verif > input[type="tel"] {
+    width: 210px;
+    font-size: 20px;
+  }
+
+  .auth_code {
+    font-size: 12px;
+    margin-bottom: 1rem;
+  }
+
+  .checkbox_group {
+    margin-bottom: 1rem;
+  }
+
+  .checkbox_group label {
+    font-size: 10px;
+  }
+
+  .checkbox_group label:before {
+    padding: 5px;
+  }
+
+  .form_btn {
+    width: 300px;
+    height: 66px;
+    font-size: 22px;
+  }
+
+  .checkbox_group input:checked + label:after {
+    top: -2px;
+    left: 4px;
+    width: 5px;
+    height: 10px;
+    border: solid #fffcf2;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+
+  .special {
+    font-size: 20px;
+    max-width: 340px;
+    margin-top: 6rem;
+  }
+
+  .otp {
+    max-width: 340px;
+    font-size: 20px;
+    margin-top: 4rem;
+    margin-bottom: 1rem;
+  }
+
+  .cancel {
+    top: 35px;
+    right: 15px;
+  }
+
+  .back {
+    top: 35px;
+    left: 15px;
+  }
+
+  .resend {
+    font-size: 14px;
+  }
 }

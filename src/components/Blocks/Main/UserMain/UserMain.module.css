@@ -9,7 +9,6 @@
     .main{
         padding: 0 20px;
         gap: 32px;
-        margin-bottom: 372px;
     }
     .left{
         border-right: 1px solid #EEE8DC;
@@ -135,5 +134,9 @@
     background: #EB5E28;
 }
 
-
-
+@media (min-width: 320px) and (max-width: 640px) {
+    .main {
+        gap: 2px;
+        margin-bottom: 1rem;
+    }
+}
