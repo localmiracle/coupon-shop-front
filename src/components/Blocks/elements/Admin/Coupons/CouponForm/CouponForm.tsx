@@ -21,7 +21,8 @@ const CouponForm: FC<CouponFormProps> = ({
   const [discount, setDiscount] = useState<number>(0);
   const [region, setRegion] = useState<string>("");
   const [category, setCategory] = useState<string>("");
-  const [subcategory, setSubcategory] = useState<string>("");
+  // const [subcategory, setSubcategory] = useState<string>("");
+  const [organization, setOrganization] = useState<string>("");
   const [error, setError] = useState<string>("");
 
   const handleImageChange = (e: any) => {
@@ -40,7 +41,8 @@ const CouponForm: FC<CouponFormProps> = ({
       setDiscount(editedObject.discount);
       setRegion(editedObject.region);
       setCategory(editedObject.category);
-      setSubcategory(editedObject.subcategory);
+      setOrganization(editedObject.organization);
+      // setSubcategory(editedObject.subcategory);
     } else {
       resetState();
     }
@@ -54,7 +56,8 @@ const CouponForm: FC<CouponFormProps> = ({
     setDiscount(0);
     setRegion("");
     setCategory("");
-    setSubcategory("");
+    // setSubcategory("");
+    setOrganization("");
     setImage(null);
     setError("");
   };
@@ -77,8 +80,10 @@ const CouponForm: FC<CouponFormProps> = ({
       if (editedObject.region !== region) formData.append("region", region);
       if (editedObject.category !== category)
         formData.append("category", category);
-      if (editedObject.subcategory !== subcategory)
-        formData.append("subcategory", subcategory);
+      // if (editedObject.subcategory !== subcategory)
+      //   formData.append("subcategory", subcategory);
+      if (editedObject.organization !== organization)
+        formData.append("organization", organization);
 
       try {
         await $adminApi.put(`/coupon/${editedObject.id}`, formData);
@@ -97,7 +102,7 @@ const CouponForm: FC<CouponFormProps> = ({
       formData.append("discount", discount.toString());
       formData.append("region", region);
       formData.append("category", category);
-      formData.append("subcategory", subcategory);
+      formData.append("organization", organization);
 
       try {
         await $adminApi.post("/coupon", formData);
@@ -195,7 +200,7 @@ const CouponForm: FC<CouponFormProps> = ({
           onChange={(e) => setCategory(e.target.value)}
         />
       </div>
-      <div className={styles.form_field}>
+      {/* <div className={styles.form_field}>
         <label htmlFor="subcategory">Подкатегория</label>
         <input
           id="subcategory"
@@ -203,6 +208,16 @@ const CouponForm: FC<CouponFormProps> = ({
           value={subcategory}
           required
           onChange={(e) => setSubcategory(e.target.value)}
+        />
+      </div> */}
+      <div className={styles.form_field}>
+        <label htmlFor="organization">Организация</label>
+        <input
+          id="organization"
+          type="text"
+          value={organization}
+          required
+          onChange={(e) => setOrganization(e.target.value)}
         />
       </div>
       <div className={styles.button_wrapper}>

@@ -25,8 +25,6 @@ const CategoryForm: FC<CategoryFormProps> = ({
     }
   }, [editedObject]);
 
-  useEffect(() => {console.log(isSubcategory)}, [isSubcategory]);
-
   const toggleSubcategory = () => {
     setIsSubcategory(!isSubcategory);
   };

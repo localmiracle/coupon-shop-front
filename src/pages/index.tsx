@@ -36,7 +36,7 @@ const HomePage: NextPage = () => {
   const loadProductPage = async (page: number) => {
     if (page > maxPage) {
       const data = await getCoupons(page);
-      if (data.length > 0) {
+      if (data?.length > 0) {
         setProductList([...productList, ...data]);
         setMaxPage(page);
       }

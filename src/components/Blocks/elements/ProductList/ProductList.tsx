@@ -14,7 +14,7 @@ const ProductList: FC<ProductListProps> = ({
   preloadProducts,
 }) => {
   let scrl = useRef(null);
-  const scrollStep = 329;
+  const scrollStep = 334;
   const [scrollX, setScrollX] = useState<number>(0);
   const [scrollEnd, setScrollEnd] = useState<boolean>(false);
 

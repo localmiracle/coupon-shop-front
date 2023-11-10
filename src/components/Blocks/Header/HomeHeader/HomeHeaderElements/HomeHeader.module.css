@@ -216,8 +216,9 @@
   overflow: auto;
   height: 200px;
   min-height: 0;
-  padding: 1rem 0;
+  padding: 1rem;
   align-items: flex-start;
+  align-content: flex-start;
 }
 
 @media (min-height: 480px) {
@@ -293,6 +294,7 @@
   .catalog_category {
     border-top: 1px solid #ccc5b9;
     padding: 0;
+    align-items: center;
   }
 
   .catalog_category > h1 {
