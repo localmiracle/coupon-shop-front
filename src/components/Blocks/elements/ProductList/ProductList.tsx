@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef, useState } from "react";
+import React, { FC, MutableRefObject, useEffect, useRef, useState } from "react";
 import styles from "./ProductList.module.css";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
@@ -13,7 +13,7 @@ const ProductList: FC<ProductListProps> = ({
   productList,
   preloadProducts,
 }) => {
-  let scrl = useRef(null);
+  let scrl = useRef() as MutableRefObject<HTMLDivElement>;
   const scrollStep = 334;
   const [scrollX, setScrollX] = useState<number>(0);
   const [scrollEnd, setScrollEnd] = useState<boolean>(false);
