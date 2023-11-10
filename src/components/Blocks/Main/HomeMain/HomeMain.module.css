@@ -12,7 +12,7 @@
   margin-bottom: 42px;
 }
 
-.bottom img {
+.bottom > img {
   user-select: none;
   padding-bottom: 10px;
 }

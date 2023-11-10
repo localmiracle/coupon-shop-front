@@ -214,49 +214,12 @@
   gap: 1.63rem 2.25rem;
   flex-wrap: wrap;
   overflow: auto;
-  height: 200px;
+  height: calc(100vh - 250px);
   min-height: 0;
   padding: 1rem;
   align-items: flex-start;
   align-content: flex-start;
 }
-
-@media (min-height: 480px) {
-  .card_list {
-    height: 200px;
-  }
-}
-
-@media (min-height: 640px) {
-  .card_list {
-    height: 375px;
-  }
-}
-
-@media (min-height: 768px) {
-  .card_list {
-    height: 520px;
-  }
-}
-
-@media (min-height: 896px) {
-  .card_list {
-    height: 640px;
-  }
-}
-
-@media (min-height: 960px) {
-  .card_list {
-    height: 710px;
-  }
-}
-
-@media (min-height: 1080px) {
-  .card_list {
-    height: 830px;
-  }
-}
-
 
 .card_list > * {
   flex-shrink: 0;
