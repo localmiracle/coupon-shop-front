@@ -7,6 +7,7 @@ import Coupons from "@/components/Blocks/elements/Admin/Coupons/Coupons";
 import Subscriptions from "@/components/Blocks/elements/Admin/Subscriptions/Subscriptions";
 import Regions from "../Regions/Regions";
 import Categories from "../Categories/Categories";
+import Users from "../Users/Users";
 
 interface PanelProps {
   isLoggedIn: boolean;
@@ -76,7 +77,7 @@ const Panel: FC<PanelProps> = ({
             {selectedField === 2 && <Organisations />}
             {selectedField === 3 && <Regions />}
             {selectedField === 4 && <Categories />}
-            {selectedField === 5 && <h2>Not Implemented</h2>}
+            {selectedField === 5 && <Users />}
           </div>
         </div>
       ) : (
