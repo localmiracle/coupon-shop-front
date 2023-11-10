@@ -4,10 +4,12 @@ import styles from "./location.module.css";
 import apiClient from "@/http/client";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
-import { setRegion } from "@/redux/regionSlice";
+import { setRegion, setTG, setVK } from "@/redux/regionSlice";
 
 type Region = {
   name: string;
+  vk: string;
+  tg: string;
 };
 
 const Location: FC = () => {
@@ -35,19 +37,26 @@ const Location: FC = () => {
   useEffect(() => {
     if (regions.length > 0) {
       const savedRegion = localStorage.getItem("region");
-      if (savedRegion && regions.some(region => region.name === savedRegion)) {
-        dispatch(setRegion(savedRegion));
+      const rg = regions.find((region) => region.name === savedRegion);
+      if (savedRegion && rg !== undefined) {
+        dispatch(setRegion(rg.name));
+        dispatch(setVK(rg.vk));
+        dispatch(setTG(rg.tg));
       } else {
         dispatch(setRegion(regions[0].name));
+        dispatch(setVK(regions[0].vk));
+        dispatch(setTG(regions[0].tg));
         localStorage.setItem("region", regions[0].name);
       }
     }
   }, [regions]);
 
-  const handleRegionSelected = (region: string) => {
-    dispatch(setRegion(region));
+  const handleRegionSelected = (region: Region) => {
+    dispatch(setRegion(region.name));
+    dispatch(setVK(regions[0].vk));
+    dispatch(setTG(regions[0].tg));
     toggleShowRegion();
-    localStorage.setItem("region", region);
+    localStorage.setItem("region", region.name);
   };
 
   return (
@@ -71,10 +80,7 @@ const Location: FC = () => {
       >
         {regions.map((r) =>
           r.name !== region ? (
-            <p
-              key={r.name}
-              onClick={() => handleRegionSelected(r.name)}
-            >
+            <p key={r.name} onClick={() => handleRegionSelected(r)}>
               {r.name}
             </p>
           ) : null

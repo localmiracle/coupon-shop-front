@@ -2,10 +2,14 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export type RegionState = {
   name: string;
+  vk: string;
+  tg: string;
 };
 
 const initialState: RegionState = {
   name: "",
+  vk: "",
+  tg: "",
 };
 
 const regionSlice = createSlice({
@@ -15,9 +19,15 @@ const regionSlice = createSlice({
     setRegion: (state, action: PayloadAction<string>) => {
       state.name = action.payload;
     },
+    setVK: (state, action: PayloadAction<string>) => {
+      state.vk = action.payload;
+    },
+    setTG: (state, action: PayloadAction<string>) => {
+      state.tg = action.payload;
+    },
   },
 });
 
-export const { setRegion } = regionSlice.actions;
+export const { setRegion, setVK, setTG } = regionSlice.actions;
 
 export default regionSlice.reducer;

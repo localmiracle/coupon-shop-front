@@ -14,36 +14,51 @@ const RegionForm: FC<RegionFormProps> = ({
   handleFinishedEdit,
 }) => {
   const [name, setName] = useState<string>("");
+  const [linkVK, setLinkVK] = useState<string>("");
+  const [linkTelegram, setLinkTelegram] = useState<string>("");
   const [error, setError] = useState<string>("");
 
   useEffect(() => {
     if (editedObject) {
       setName(editedObject.name);
+      setLinkVK(editedObject.vk);
+      setLinkTelegram(editedObject.tg);
     } else {
-      setName("");
+      resetState();
     }
   }, [editedObject]);
+
+  const resetState = () => {
+    setName("");
+    setLinkVK("");
+    setLinkTelegram("");
+    setError("");
+  };
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    const data = {
+      name: name,
+      vk: linkVK,
+      tg: linkTelegram,
+    };
+
     if (editedObject) {
       try {
-        await $adminApi.put(`/region/${editedObject.id}`, { name: name });
+        await $adminApi.put(`/region/${editedObject.id}`, data);
         updateObjectCallback();
         handleFinishedEdit();
-        setName("");
-        setError("");
+        resetState();
       } catch (e) {
         setError("Произошла ошибка при редактировании региона");
         console.log(e);
       }
     } else {
       try {
-        await $adminApi.post("/region", { name: name });
+        await $adminApi.post("/region", data);
         updateObjectCallback();
-        setName("");
-        setError("");
+        resetState();
       } catch (e) {
         setError("Произошла ошибка при добавлении региона");
         console.log(e);
@@ -62,6 +77,26 @@ const RegionForm: FC<RegionFormProps> = ({
           value={name}
           required
           onChange={(e) => setName(e.target.value)}
+        />
+      </div>
+      <div className={styles.form_field}>
+        <label htmlFor="vk">VK</label>
+        <input
+          id="vk"
+          type="text"
+          value={linkVK}
+          required
+          onChange={(e) => setLinkVK(e.target.value)}
+        />
+      </div>
+      <div className={styles.form_field}>
+        <label htmlFor="tg">Telegram</label>
+        <input
+          id="tg"
+          type="text"
+          value={linkTelegram}
+          required
+          onChange={(e) => setLinkTelegram(e.target.value)}
         />
       </div>
       <div className={styles.button_wrapper}>
