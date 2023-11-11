@@ -1,5 +1,6 @@
 import axios from "axios";
 import { tokenIsValid } from "./utils";
+import router from "next/router";
 
 export const API_URL = `${process.env.NEXT_PUBLIC_API_URL}:${process.env.NEXT_PUBLIC_API_PORT}/api`;
 
@@ -15,7 +16,7 @@ apiClient.interceptors.request.use((config) => {
       config.headers.Authorization = `Bearer ${token}`;
       config.url = config.url.replace("/standard", "");
     }
-    if (config.url?.includes("subscriptions")) {
+    if (config.url?.includes("subscriptions") || config.url?.includes("payment")) {
       config.headers.Authorization = `Bearer ${token}`;
     }
   } else {
@@ -36,7 +37,7 @@ apiClient.interceptors.response.use(
     // Do something with response error
     if (error.response.status === 401) {
       localStorage.removeItem("token");
-      location.reload();
+      router.push('/login');
     }
     return Promise.reject(error);
   }

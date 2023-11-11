@@ -1,12 +1,12 @@
 import React, { FC, useEffect, useState } from "react";
 import styles from "./Product.module.css";
 import Image from "next/image";
-import ClearIcon from "@mui/icons-material/Clear";
-import EditNoteIcon from "@mui/icons-material/EditNote";
+import apiClient from "@/http/client";
+import router from "next/router";
 
 interface ProductProps {
   product: {
-    id: string;
+    ID: string;
     image: File;
     content_url: string;
     name: string;
@@ -40,6 +40,21 @@ const Product: FC<ProductProps> = ({ product, style, fullSize = true }) => {
       break;
   }
 
+  const handleBuy = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    try {
+      const { data } = await apiClient.post("/payment", {
+        amount: product.price.toFixed(2).toString(),
+        payment_type: "coupon",
+        type_id: product.ID,
+      });
+      router.push(data?.RedirectURL);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
     <div
       className={`${styles.card} ${fullSize ? "" : styles.mini}`}
@@ -61,7 +76,9 @@ const Product: FC<ProductProps> = ({ product, style, fullSize = true }) => {
         <div className={styles.price}>
           <span>{product.price} ₽</span>
         </div>
-        <button>КУПИТЬ</button>
+        <button type="button" onClick={handleBuy}>
+          КУПИТЬ
+        </button>
       </div>
     </div>
   );

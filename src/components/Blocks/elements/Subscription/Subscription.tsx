@@ -4,6 +4,8 @@ import Fire from "./../../../../../public/fire.png";
 import Image from "next/image";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import apiClient from "@/http/client";
+import router from "next/router";
 
 interface SubscriptionProps {
   subscription: {
@@ -30,6 +32,21 @@ const Subscription: FC<SubscriptionProps> = ({ subscription }) => {
       levelStyle = styles.level1;
       break;
   }
+
+  const handleBuy = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    try {
+      const { data } = await apiClient.post("/payment", {
+        amount: subscription.price.toFixed(2).toString(),
+        payment_type: "subscription",
+        type_id: subscription.id,
+      });
+      router.push(data?.RedirectURL);
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   return (
     <div className={`${styles.subscription} ${levelStyle}`}>
@@ -84,7 +101,7 @@ const Subscription: FC<SubscriptionProps> = ({ subscription }) => {
         </div>
       </div>
       <p className={styles.price}>{subscription.price} ₽ в месяц</p>
-      <button type="button">Купить</button>
+      <button type="button" onClick={handleBuy}>Купить</button>
     </div>
   );
 };
