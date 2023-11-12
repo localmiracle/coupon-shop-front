@@ -1,0 +1,123 @@
+.members {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  border-top: 1px solid #eee8dc;
+  padding-top: 1rem;
+  width: 100%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  border-bottom: 1px solid #eee8dc;
+  width: 100%;
+}
+
+.button_wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.form button {
+  margin-bottom: 1rem;
+  flex-shrink: 0;
+  border-radius: 20px;
+  border: none;
+  padding: 1rem 6rem;
+  background: #eb5e28;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.form_field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4rem;
+}
+
+.form_field input {
+  color: #252422;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 0.4rem 0.8rem;
+  border-bottom: 1px solid #eee8dc;
+}
+
+.form_field input[type="text"] {
+  width: 12rem;
+}
+
+.form_field input[type="email"] {
+  width: 12rem;
+}
+
+.form_field select {
+  color: #252422;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid #eee8dc;
+  background-color: #fffcf2;
+}
+
+.form_field label {
+  color: #252422;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.error {
+  color: red;
+  text-align: center;
+}
+
+.members_dropdown_label {
+  width: 100%;
+  padding: 0.5rem 0.2rem;
+  text-decoration: underline;
+  cursor: pointer;
+  user-select: none;
+}
+
+.members_list {
+  width: 100%;
+  padding: 0 0.2rem;
+}
+
+.members_table {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+.members_table, .members_table th, .members_table td {
+  border: 1px solid #eee8dc;
+}
+
+.modify {
+  color: skyblue !important;
+  cursor: pointer;
+  text-decoration: underline;
+  user-select: none;
+}
+
+.delete {
+  color: crimson !important;
+  cursor: pointer;
+  text-decoration: underline;
+  user-select: none;
+}
+
+.cancel {
+  color: grey !important;
+  cursor: pointer;
+  text-decoration: underline;
+  user-select: none;
+}

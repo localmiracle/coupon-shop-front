@@ -5,6 +5,7 @@ import Modal from "@/components/UI/Modals/Modal";
 import OrganisationForm from "./OrganisationForm/OrganisationForm";
 import $adminApi from "@/http/adminClient";
 import Image from "next/image";
+import OrganisationMembers from "./OrganisationMembers/OrganisationMembers";
 
 type Organisation = {
   id: string;
@@ -136,16 +137,40 @@ const Organisations: FC = () => {
                 </div>
               </div>
               {previewObject?.id === organisation.id && (
-                <div className={styles.detail}>
-                  <div className={styles.detail_fields}>
-                    <p><span>Номер:</span> {organisation.orgn}</p>
-                    <p><span>ИНН:</span> {organisation.inn}</p>
-                    <p><span>КПП:</span> {organisation.kpp}</p>
-                    <p><span>Адрес:</span> {organisation.address}</p>
-                    <p><span>Email администратора:</span> {organisation.email_admin}</p>
-                    <p><span>Уровень подписки:</span> {organisation.level_subscription}</p>
+                <div className={styles.organisation_info}>
+                  <div className={styles.detail}>
+                    <div className={styles.detail_fields}>
+                      <p>
+                        <span>Номер:</span> {organisation.orgn}
+                      </p>
+                      <p>
+                        <span>ИНН:</span> {organisation.inn}
+                      </p>
+                      <p>
+                        <span>КПП:</span> {organisation.kpp}
+                      </p>
+                      <p>
+                        <span>Адрес:</span> {organisation.address}
+                      </p>
+                      <p>
+                        <span>Email администратора:</span>{" "}
+                        {organisation.email_admin}
+                      </p>
+                      <p>
+                        <span>Уровень подписки:</span>{" "}
+                        {organisation.level_subscription}
+                      </p>
+                    </div>
+                    <Image
+                      src={organisation.content_url}
+                      alt={""}
+                      width={112}
+                      height={112}
+                    />
                   </div>
-                  <Image src={organisation.content_url} alt={''} width={112} height={112}/>
+                  <OrganisationMembers
+                    organisation={organisation}
+                  />
                 </div>
               )}
             </div>

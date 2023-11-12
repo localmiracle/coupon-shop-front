@@ -43,13 +43,19 @@
   font-weight: 400;
 }
 
+.organisation_info {
+  border-bottom: 1px solid #eee8dc;;
+  border-top: 1px solid #eee8dc;
+  padding: 0.8rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
 .detail {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.8rem 1rem;
-  border-top: 1px solid #eee8dc;
-  border-bottom: 1px solid #eee8dc;
 }
 
 .detail_fields span {
