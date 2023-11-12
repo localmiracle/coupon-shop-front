@@ -216,70 +216,74 @@ const OrganisationMembers: FC<OrganisationMembersProps> = ({
           className={styles.members_list}
           style={showMembers ? { display: "flex" } : { display: "none" }}
         >
-          <table className={styles.members_table}>
-            <thead>
-              <tr>
-                <th>Email</th>
-                <th>Имя</th>
-                <th>Роль</th>
-                <th>Действия</th>
-              </tr>
-            </thead>
-            <tbody>
-              {members.map((member) => (
-                <tr key={member.id}>
-                  <td>{member.email}</td>
-                  <td>{member.name + " " + member.second_name}</td>
-                  <td>{getRoleString(member.role)}</td>
-                  <td>
-                    {editedObject?.id === member.id ? (
-                      <p className={styles.cancel} onClick={handleStopEdit}>
-                        Отмена
-                      </p>
-                    ) : (
-                      <>
+          {members.length > 0 ? (
+            <table className={styles.members_table}>
+              <thead>
+                <tr>
+                  <th>Email</th>
+                  <th>Имя</th>
+                  <th>Роль</th>
+                  <th>Действия</th>
+                </tr>
+              </thead>
+              <tbody>
+                {members.map((member) => (
+                  <tr key={member.id}>
+                    <td>{member.email}</td>
+                    <td>{member.name + " " + member.second_name}</td>
+                    <td>{getRoleString(member.role)}</td>
+                    <td>
+                      {editedObject?.id === member.id ? (
+                        <p className={styles.cancel} onClick={handleStopEdit}>
+                          Отмена
+                        </p>
+                      ) : (
                         <>
-                          <p
-                            className={styles.modify}
-                            onClick={() => handleEdit(member)}
-                          >
-                            Редактировать
-                          </p>
-                        </>
+                          <>
+                            <p
+                              className={styles.modify}
+                              onClick={() => handleEdit(member)}
+                            >
+                              Редактировать
+                            </p>
+                          </>
 
-                        <p>
-                          {affirmationObject?.id === member.id ? (
-                            <>
+                          <p>
+                            {affirmationObject?.id === member.id ? (
+                              <>
+                                <span
+                                  className={styles.delete}
+                                  onClick={() => handleDelete(member)}
+                                >
+                                  Удалить
+                                </span>
+                                <span> / </span>
+                                <span
+                                  className={styles.cancel}
+                                  onClick={() => toggleAffirmation(member)}
+                                >
+                                  Отмена
+                                </span>
+                              </>
+                            ) : (
                               <span
                                 className={styles.delete}
-                                onClick={() => handleDelete(member)}
+                                onClick={() => toggleAffirmation(member)}
                               >
                                 Удалить
                               </span>
-                              <span> / </span>
-                              <span
-                                className={styles.cancel}
-                                onClick={() => toggleAffirmation(member)}
-                              >
-                                Отмена
-                              </span>
-                            </>
-                          ) : (
-                            <span
-                              className={styles.delete}
-                              onClick={() => toggleAffirmation(member)}
-                            >
-                              Удалить
-                            </span>
-                          )}
-                        </p>
-                      </>
-                    )}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+                            )}
+                          </p>
+                        </>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <p>Нет пользователей</p>
+          )}
         </div>
       </div>
     </div>
