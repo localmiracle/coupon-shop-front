@@ -1,5 +1,6 @@
 .orgs {
   display: flex;
+  flex-wrap: wrap;
   gap: 3.06rem;
 }
 

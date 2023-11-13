@@ -62,7 +62,6 @@ const OrganisationPage: NextPage<orgPageProps> = ({ token }) => {
         <UserMain>
           {organisation && Object.keys(organisation).length > 0 && (
             <>
-              {" "}
               <h2 className={styles.name}>{organisation.name}</h2>
               <SwitchButtons />
               {active === "people" ? (
