@@ -70,6 +70,15 @@
   flex-shrink: 0;
 }
 
+@media (max-width: 1024px) {
+  .item_slider .left_arrow_left {
+    left: 0;
+  }
+  .item_slider .right_arrow_right {
+    right: 0;
+  }
+}
+
 .is_disabled_hide {
   display: none;
 }

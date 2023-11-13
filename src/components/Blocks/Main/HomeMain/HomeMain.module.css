@@ -17,12 +17,6 @@
   padding-bottom: 10px;
 }
 
-@media (max-width: 1280px) {
-  .bottom img {
-    display: none;
-  }
-}
-
 .bottom__left {
   margin-top: 43px;
 }
@@ -113,7 +107,7 @@
   border: 1px solid #ccc5b9;
   background: url("./../../../../../public/adside.png");
   background-repeat: no-repeat;
-  background-size:cover;
+  background-size: cover;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -137,6 +131,10 @@
 }
 
 @media (max-width: 1280px) {
+  .bottom__right img {
+    display: none;
+  }
+
   .right {
     display: none;
   }

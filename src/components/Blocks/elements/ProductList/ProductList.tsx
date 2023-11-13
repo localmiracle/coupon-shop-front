@@ -1,4 +1,10 @@
-import React, { FC, MutableRefObject, useEffect, useRef, useState } from "react";
+import React, {
+  FC,
+  MutableRefObject,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import styles from "./ProductList.module.css";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
@@ -20,7 +26,7 @@ const ProductList: FC<ProductListProps> = ({
 
   useEffect(() => {
     // if scrolled past 5th element
-    if (scrollX >= (scrollStep * 2)) {  
+    if (scrollX >= scrollStep * 2) {
       // preload next page of products
       preloadProducts(2 + ~~((~~(scrollX / scrollStep) - 2) / 6));
     }
@@ -93,9 +99,7 @@ const ProductList: FC<ProductListProps> = ({
           <svg
             onClick={() => slide(+scrollStep)}
             className={`${styles.right_arrow_right} ${
-              !scrollEnd && productList.length > 3
-                ? null
-                : styles.is_disabled_hide
+              !scrollEnd ? null : styles.is_disabled_hide
             }`}
             xmlns="http://www.w3.org/2000/svg"
             width="40"
