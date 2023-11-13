@@ -16,7 +16,11 @@ apiClient.interceptors.request.use((config) => {
       config.headers.Authorization = `Bearer ${token}`;
       config.url = config.url.replace("/standard", "");
     }
-    if (config.url?.includes("subscriptions") || config.url?.includes("payment")) {
+    if (
+      config.url?.includes("subscriptions") ||
+      config.url?.includes("payment") ||
+      config.url?.includes("organizationInfo")
+    ) {
       config.headers.Authorization = `Bearer ${token}`;
     }
   } else {
@@ -37,7 +41,7 @@ apiClient.interceptors.response.use(
     // Do something with response error
     if (error.response.status === 401) {
       localStorage.removeItem("token");
-      router.push('/login');
+      router.push("/login");
     }
     return Promise.reject(error);
   }

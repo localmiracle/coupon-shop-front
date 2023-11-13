@@ -5,37 +5,31 @@ import { useQuery } from '@apollo/client';
 
 interface UsersTableProps{
     token: string;
+    members: any[];
 }
 
-const UsersTable:FC<UsersTableProps> = ({token}) => {
-    const { loading, error, data } = useQuery(GET_ORGANISATION_USERS, {
-        context: {
-          headers: {
-            Authorization: `Bearer ${token}`
-          },
-        }
-      });
-    const users = data? data.getOrganizationUsers : null;
+const UsersTable:FC<UsersTableProps> = ({token, members}) => {
+
   return (
     <div className={styles.table__wrapper}>
       <table className={styles.table}>
       <thead >
         <tr>
           <th className={styles.th}>ID</th>
-          <th className={styles.th}>Номер</th>
+          {/* <th className={styles.th}>Номер</th> */}
           <th className={styles.th}>Почта</th>
           <th className={styles.th}>ID Организации</th>
           <th className={styles.th}>Роль</th>
         </tr>
       </thead>
       <tbody>
-        {users ? users.map((user:any) => (
-          <tr key={user.id}>
-            <td className={styles.td}>{user.id}</td>
-            <td className={styles.td}>{user.phone}</td>
-            <td className={styles.td}>{user.email}</td>
-            <td className={styles.td}>{user.organizationId}</td>
-            <td className={styles.td}>{user.roles}</td>
+        {members && members.length > 0 ? members.map((member:any) => (
+          <tr key={member.id}>
+            <td className={styles.td}>{member.id}</td>
+            {/* <td className={styles.td}>{member.phone}</td> */}
+            <td className={styles.td}>{member.email}</td>
+            <td className={styles.td}>{member.organization_ID}</td>
+            <td className={styles.td}>{member.role}</td>
           </tr>
         ))
         : "Пользователи не найдены!"}

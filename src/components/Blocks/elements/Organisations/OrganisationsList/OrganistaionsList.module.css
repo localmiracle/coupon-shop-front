@@ -1,37 +1,70 @@
-.orgs{
-    display: flex;
+.orgs {
+  display: flex;
+  gap: 3.06rem;
 }
 
-.org__item{
-    border-radius: 10px;
-    border: 1px solid #C2BAAE;
-    background: #CCC5B9;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 15px;
+.org__item {
+  border-radius: 10px;
+  border: 1px solid #c2baae;
+  background: #ccc5b9;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 18px;
 }
 
-.address{
-    display: flex;
-    gap: 3px;
-    font-size: 10px;
-    font-style: normal;
-    font-weight: 600;
-    color: #6C645B;
+.org__item:hover {
+  border: 1px solid #e25a26;
+  background: #eb5e28;
+  box-shadow: 0px 4px 4px 0px rgba(235, 94, 40, 0.5),
+    0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
 }
 
-.notfound{
-    color: #252422;
-    font-family: Inter;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    padding: 19px;
-    border-radius: 10px;
-    background: #FFFCF2;
-    box-shadow: 0px 4px 4px 0px rgba(204, 197, 185, 0.26);
+.org__item:hover h3 {
+  color: #fffcf2;
+}
+
+.org__item:hover div {
+  color: #fffcf2;
+}
+
+.org__item h3 {
+  color: #403d39;
+  font-family: Inter;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 10px 0;
+}
+
+.org_image {
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.address {
+  width: 100%;
+  padding: 18px 0;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 600;
+  color: #6c645b;
+}
+
+.notfound {
+  color: #252422;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 19px;
+  border-radius: 10px;
+  background: #fffcf2;
+  box-shadow: 0px 4px 4px 0px rgba(204, 197, 185, 0.26);
 }
